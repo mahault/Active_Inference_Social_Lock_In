@@ -488,6 +488,224 @@ matter for what NOT to write:
 - [Albarracin et al. 2022 — Epistemic Communities under Active Inference](https://www.mdpi.com/1099-4300/24/4/476)
 - [Hyland & Albarracin 2025 — On the Variational Costs of Changing Our Minds](https://arxiv.org/abs/2509.17957)
 
+---
+
+## Part 7: Second-pass deep research — VERDICT NO-GO on the draft (2026-06-05)
+
+A hostile second-pass workflow (106 agents, 24 sources, 25 adversarially
+verified claims) flagged **three blocking issues** with the draft opening
+paragraph and one major correction to the first workflow's citation list.
+The draft from Part 6 is **NOT ready to ship** as the basis for rewriting.
+
+### Blocking issue 1 — Citation misattribution in the first workflow
+
+**arXiv 2104.01066 is NOT Albarracin et al. 2022.** It is Kaufmann, Gupta &
+Taylor (2021, Entropy 23(7):830, "An active inference model of collective
+intelligence"). The first workflow misattributed this URL as Pillar 1.
+
+**Action:** Pillar 1 needs to be re-sourced. The Albarracin et al. 2022
+"epistemic communities" paper is published in **Entropy 24(4):476**
+(https://www.mdpi.com/1099-4300/24/4/476 — this URL was correctly cited
+elsewhere in the first workflow). The precision-based-lock-in claim is
+attributable to the right paper, but the citation needs to be cleaned up
+before any sentence in the draft is written.
+
+### Blocking issue 2 — Holmes 2000 contests the Kuhnian framing
+
+**F.L. Holmes (2000, Isis 91(4):735-753)** explicitly argues that the
+Chemical Revolution is better understood as **competition between two rival
+research programs** rather than as paradigm replacement. Direct quote from
+the abstract:
+
+> "the events at the heart of the chemical revolution should be viewed more
+> as a competition between two rival new research programs than as the
+> replacement of a reigning paradigm"
+
+This destabilizes the IWAI paper's rhetorical use of phlogiston as a clean
+Kuhnian motivating example. A historian-of-science reviewer who has read
+Holmes will flag this immediately.
+
+**Two options:**
+
+(a) **Engage Holmes directly.** Reframe phlogiston as "instability in a
+network of theoretical commitments under rival research programs" rather
+than "paradigm replacement." This is actually *more* compatible with the
+IWAI paper's structural framing — rival programs are exactly what the
+dependency network is supposed to formalize. Cite Holmes as the source of
+the reframing.
+
+(b) **Sidestep.** Cite Kuhn 1962 directly for the paradigm-shift framing
+and engage Holmes in related work. This is rhetorically weaker but cheaper.
+
+Recommend (a) because it converts a potential weakness into a strength.
+
+### Blocking issue 3 — Thagard is conceptual-change precedent, NOT Bayesian precedent
+
+The strongest structural precedent for treating phlogiston formally is
+**Thagard 1990 (Philosophy of Science) + ECHO 1989 (BBS)**. But ECHO is a
+**connectionist constraint-satisfaction network** with excitatory/inhibitory
+links over evidence-hypothesis propositions — **NOT a Bayesian dependency
+network with Schur-complement reduction.**
+
+Citing Thagard as "structural precedent" without specifying the formalism
+difference invites a methodological-misattribution objection. The correct
+citation discipline is:
+
+> "Thagard's ECHO model treated the phlogiston/oxygen debate as constraint
+> satisfaction over a coherence network [Thagard 1989, 1990]. We extend the
+> network treatment from coherence to dependency: where ECHO computed
+> hypothesis activation via excitatory/inhibitory links, we compute revision
+> cost and conviction propagation via T = (I−A)⁻¹ on a Bayesian DAG."
+
+This credits Thagard for the conceptual-change precedent, distinguishes the
+formalism, and previews the contribution.
+
+### Empirical hub-node breadth IS documented (but framing is the authors')
+
+Two primary sources support the empirical claim that phlogiston carried
+broad explanatory weight:
+
+- **Boantza 2017 (Foundations of Chemistry)**: phlogiston "was hypothesised
+  to stir up heat and to produce inflammability, malleability and ductility
+  ... [and accounted for] colour, odour and flavour ... [it] came with a
+  legacy of varying and additional properties."
+- **Blumenthal & Ladyman 2017 (same journal)**: "rapid proliferation of
+  late phlogistic theories, particularly from 1784 ... Each of them either
+  reached impasses due to internal problems, or included features that made
+  them unacceptable even to other phlogistians."
+
+**But:** three related stronger claims were refuted 0-3 by adversarial
+verification:
+- "Phlogiston was widely accepted because it grounded a long-standing prior
+  commitment about combustibility" (refuted — historians don't endorse this
+  upstream-dependency reading)
+- "Phlogiston's dependency structure collapsed specifically because the
+  theory could not simultaneously discharge all of its explanatory
+  obligations" (refuted — this is the authors' analytical interpretation,
+  not historians')
+
+**Action:** Phrase the hub-node framing as the authors' analytical move
+explicitly. Use language like "we read phlogiston as ..." rather than
+"phlogiston was ...". Cite Boantza 2017 and Blumenthal & Ladyman 2017 for
+the empirical breadth; do not claim historians explicitly endorse the
+dependency-network reading.
+
+### Confirmed: the BMR-for-collective-cognition gap is REAL
+
+The IWAI paper's claim that "BMR has not been applied to collective
+cognition or paradigm shifts" survives verification 3-0. Specifically:
+
+- Smith/Neacsu et al. 2022 PLOS ONE: BMR applied to **120 independent
+  single-agent foragers**, not interacting agents
+- Priorelli & Stoianov 2023 (bioRxiv): reduced priors **within a single
+  agent** for sensorimotor inference
+- Friston et al. 2016 (PEB+BMR canonical paper): "group" means
+  **between-subject DCM neuroimaging**, not multi-agent collective
+  cognition
+- Friston et al. 2024 (Collective Intelligence vision paper): mentions
+  "model selection" but **does not operationalize BMR**
+
+**Phrasing correction:** Use "does not OPERATIONALIZE BMR for collective
+cognition" rather than "does not invoke BMR" — the latter is too strong
+because Friston et al. 2024 mentions model selection. The IWAI paper's
+contribution is operationalizing BMR in a multi-agent, shared-world
+setting — that's the genuinely novel move.
+
+### Revised draft opening paragraph (POST-SURGERY)
+
+Incorporates all three fixes:
+
+> "When the chemical community released phlogiston, it did not revise a
+> single credence — it rewrote a dependency network in which combustion,
+> calcination, respiration, and the theory of acids were all load-bearing
+> on a hub that had to go. Whether one reads this as a Kuhnian paradigm
+> shift [Kuhn 1962] or as competition between rival research programs
+> [Holmes 2000], the structural fact is the same: late-phlogistic theorists
+> proposed cascading revisions that proved mutually incompatible [Boantza
+> 2017; Blumenthal & Ladyman 2017], because phlogiston was load-bearing for
+> too much. Standard network-epistemology models of scientific communities
+> cannot represent this puzzle: agents are equipped with a scalar credence
+> in [0,1] over a fixed proposition [PolyGraphs 2024; O'Connor & Weatherall
+> 2018], so persistent disagreement appears only as collective failure
+> rather than as the cost of revising a connected web of commitments. The
+> closest formal precedent — Thagard's ECHO — treated the phlogiston/oxygen
+> debate as constraint satisfaction over a coherence network [Thagard 1989,
+> 1990], but with excitatory/inhibitory links rather than directed
+> dependencies. Active-inference accounts of epistemic communities supply an
+> endogenous precision-based mechanism for lock-in [Albarracin et al. 2022,
+> Entropy 24(4):476] and a formal route from individual to group-level
+> generative models [Friston et al. 2023; Tschantz et al. 2025], but neither
+> operationalizes structure learning over the network the agents share. We
+> close this gap by treating a paradigm as a Bayesian network of
+> interdependent commitments and identifying its dynamics with Bayesian
+> model expansion and reduction [Friston 2018; Smith et al. 2022; Ullman &
+> Tenenbaum 2020] over a hidden world. A single propagation operator
+> T = (I−A)⁻¹ acts on two source vectors to generate two distinct fields on
+> the same network: conservatism κ = T·1, the carry-over cost of revising a
+> commitment, and conviction U = T·u, intrinsic utility propagated through
+> the same dependencies. Lock-in, motivated persistence, and Kuhnian
+> transitions all fall out of how these two fields interact."
+
+Length: ~290 words (up from 210). Heavier on citations because it engages
+the historical-philosophy literature it would otherwise duck. Still fits in
+page 1 column 1 of LNCS but more demanding on the reader. The cost is worth
+it because it preempts the two strongest hostile reads (Holmes,
+Thagard-formalism-mismatch).
+
+### Updated citation discipline
+
+**First two pages (§§1–2) — additions:**
+- Add **Holmes 2000 (Isis)** — engages the rival-programs reading
+- Add **Thagard 1990 (Philosophy of Science)** and/or **Thagard 1989 (BBS)**
+  — ECHO precedent with formalism distinction
+- Add **Boantza 2017 (Foundations of Chemistry)** — empirical breadth of
+  phlogiston's explanatory load
+- Add **Blumenthal & Ladyman 2017 (Foundations of Chemistry)** — cascading
+  late-phlogistic revisions
+
+**First two pages — corrections:**
+- Verify the Albarracin et al. 2022 citation goes to **Entropy 24(4):476**
+  (https://www.mdpi.com/1099-4300/24/4/476), NOT arXiv 2104.01066
+
+**Related work — add:**
+- **Kaufmann, Gupta & Taylor 2021 (Entropy 23(7):830)** — multi-agent AIF
+  precedent without BMR, useful as related-work positioning
+
+### Open questions still unresolved (caveats for the rewrite)
+
+1. **No comparative source pits phlogiston against behaviorism vs
+   miasma/germ-theory.** The choice rests on synthesis grounds only — not
+   a literature precedent. Defend on internal coherence (richest network
+   structure, lowest audience domain-decoding cost) when challenged.
+
+2. **No 2024-2026 social/network psychology work on motivated belief
+   revision or attitude-network lock-in surveyed in this pass.** The first
+   workflow caught Dalege 2024 (CAN update); the broader landscape was not
+   covered. A hostile psychology reviewer could exploit this.
+
+3. **"Scalar credence over a fixed menu" phrasing is not directly verified
+   as the most defensible characterization of network epistemology.**
+   Verbatim from PolyGraphs 2024, so defensible — but no published critique
+   uses this exact phrasing more sharply.
+
+4. **Thagard 1990's full body text not directly verified — only abstract
+   and CMU PDF retrieval.** Re-read the full text before any sentence in
+   the rewrite leans on Thagard as the structural precedent.
+
+### Final go/no-go
+
+The Part 6 draft paragraph is **NO-GO**.
+
+The Part 7 post-surgery draft (above) is **READY TO USE** as the basis for
+rewriting, provided:
+
+- The Albarracin 2022 citation gets cleaned up (verify Entropy 24(4):476)
+- The Thagard 1990 full text gets directly checked (not just abstract)
+- The authors are comfortable engaging Holmes 2000 in the opening rather
+  than deferring it to related work
+
+---
+
 ### Added from deep research (2026-06-05)
 
 - [Devlin et al. 2024 — PolyGraphs reflection (Nature HSSC)](https://www.nature.com/articles/s41599-024-02619-z)
@@ -498,3 +716,14 @@ matter for what NOT to write:
 - [Ullman & Tenenbaum 2020 — Bayesian models of conceptual development (Annual Review Dev Psych)](https://klab.tch.harvard.edu/academia/classes/BAI/pdfs/UllmanEtAl_AnnRevPsych2020.pdf)
 - [Ullman, Goodman & Tenenbaum 2010/2012 — Theory learning as stochastic search](https://cocolab.stanford.edu/papers/UllmanEtAl2010-Cogsci.pdf)
 - [Albarracin et al. 2024 — Shared Protentions (Entropy)](https://www.mdpi.com/1099-4300/26/4/303)
+
+### Added from second-pass deep research (2026-06-05)
+
+- [Holmes 2000 — The Revolution in Chemistry and Physics: Overthrow of a Reigning Paradigm or Competition between Contemporary Research Programs? (Isis 91:4)](https://pubmed.ncbi.nlm.nih.gov/11284231/)
+- [Thagard 1990 — The Conceptual Structure of the Chemical Revolution (Philosophy of Science)](https://www.cambridge.org/core/journals/philosophy-of-science/article/abs/conceptual-structure-of-the-chemical-revolution/EDAC953E3DCFBB4FA3A009CF4C31CF0B)
+- [Thagard 1989 — Explanatory Coherence / ECHO (Behavioral and Brain Sciences)](https://www.cambridge.org/core/journals/behavioral-and-brain-sciences/article/explanatory-coherence/E05CB61CD64C26138E794BC601CC9D7A)
+- [Boantza 2017 — phlogiston's explanatory breadth (Foundations of Chemistry)](https://link.springer.com/article/10.1007/s10698-017-9289-0)
+- [Blumenthal & Ladyman 2017 — late-phlogistic theories' cascading incompatibility (Foundations of Chemistry)](https://link.springer.com/article/10.1007/s10698-017-9289-0)
+- [Kaufmann, Gupta & Taylor 2021 — An active inference model of collective intelligence (Entropy 23:7)](https://arxiv.org/abs/2104.01066)
+- [Priorelli & Stoianov 2023 — reduced priors for single-agent sensorimotor inference (bioRxiv)](https://www.biorxiv.org/content/10.1101/2023.09.10.557043v2)
+- [Aguilar-Valdez & Degaetano-Ortlieb 2026 — complex network analysis of phlogiston/oxygen debate (arXiv)](https://arxiv.org/abs/2603.17594)
