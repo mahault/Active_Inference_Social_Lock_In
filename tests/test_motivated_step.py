@@ -11,6 +11,7 @@ from src.pomdp.simple_step import SimpleConfig
 from src.pomdp.motivated_step import (
     MotivatedConfig,
     apply_value_tilt,
+    apply_motivated_gate,
     run_motivated,
 )
 
@@ -160,4 +161,70 @@ class TestIntegration:
         out = run_motivated(cfg)
         assert out["mean_qB"].shape == (20,)
         # Should not crash; trajectory should be finite
+        assert np.all(np.isfinite(out["mean_qB"]))
+
+
+# ======================================================================
+# Evidence-gate mode (cost-of-mind-change)
+# ======================================================================
+
+class TestEvidenceGate:
+
+    def test_lambda_zero_is_identity(self):
+        """At lambda=0 the gate returns the honest posterior unchanged."""
+        q_prior = jnp.array([[0.25, 0.25, 0.25, 0.25]])
+        q_post = jnp.array([[0.15, 0.15, 0.35, 0.35]])
+        U = jnp.array([[2.0, 0.0]])
+        out = apply_motivated_gate(q_prior, q_post, U, 0.0, K=2, C=2)
+        np.testing.assert_allclose(np.asarray(out), np.asarray(q_post), atol=1e-5)
+
+    def test_confirming_evidence_flows_freely(self):
+        """Evidence that CONFIRMS a valued paradigm is not gated, any lambda."""
+        q_prior = jnp.array([[0.25, 0.25, 0.25, 0.25]])
+        # honest move increases belief in theta=0 (the valued one)
+        q_post = jnp.array([[0.35, 0.35, 0.15, 0.15]])
+        U = jnp.array([[2.0, 0.0]])
+        out = apply_motivated_gate(q_prior, q_post, U, 3.0, K=2, C=2)
+        np.testing.assert_allclose(np.asarray(out), np.asarray(q_post), atol=1e-5)
+
+    def test_disconfirming_evidence_is_resisted(self):
+        """Disconfirming a valued paradigm is partially resisted: the gated
+        belief sits BETWEEN the honest posterior and the prior, monotonically
+        in lambda."""
+        q_prior = jnp.array([[0.25, 0.25, 0.25, 0.25]])   # theta-marginal [0.5,0.5]
+        q_post = jnp.array([[0.15, 0.15, 0.35, 0.35]])    # honest [0.3,0.7], drops theta0
+        U = jnp.array([[2.0, 0.0]])                        # values theta0
+
+        def theta0(q):
+            return float(q.reshape(1, 2, 2).sum(2)[0, 0])
+
+        prev = theta0(q_post)   # 0.3, the honest (unresisted) value
+        for lam in [0.5, 1.0, 3.0]:
+            g = apply_motivated_gate(q_prior, q_post, U, lam, K=2, C=2)
+            v = theta0(g)
+            # resisted upward toward the prior (0.5), but not past it
+            assert prev <= v <= 0.5 + 1e-6, (lam, v)
+            prev = v
+
+    def test_gate_preserves_context_conditional(self):
+        """The gate only reweights the paradigm marginal; q(c|theta) is kept."""
+        q_prior = jnp.array([[0.25, 0.25, 0.25, 0.25]])
+        # within theta=1 block, context split 0.2/0.8
+        q_post = jnp.array([[0.15, 0.15, 0.10, 0.60]])
+        U = jnp.array([[2.0, 0.0]])
+        out = np.asarray(apply_motivated_gate(q_prior, q_post, U, 2.0, K=2, C=2))[0]
+        # context conditional within theta=1: post was 0.10:0.60 -> 1:6
+        ratio_post = 0.10 / 0.60
+        ratio_out = out[2] / out[3]
+        np.testing.assert_allclose(ratio_out, ratio_post, rtol=1e-4)
+
+    def test_run_with_gate_mode(self):
+        """End-to-end run in evidence_gate mode produces finite trajectory."""
+        scfg = _simple_cfg(n_steps=20, n_agents=10)
+        cfg = MotivatedConfig(simple=scfg, lambda_tilt=2.0, motivated=True,
+                              update_mode="evidence_gate")
+        N = scfg.n_agents
+        U = np.tile([1.0, 0.0], (N, 1))   # all value the wrong paradigm
+        out = run_motivated(cfg, U_per_agent=U)
+        assert out["mean_qB"].shape == (20,)
         assert np.all(np.isfinite(out["mean_qB"]))
