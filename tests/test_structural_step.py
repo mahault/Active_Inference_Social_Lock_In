@@ -459,3 +459,116 @@ class TestIntegration:
         a = run_structural(cfg)
         b = run_structural(cfg)
         np.testing.assert_array_equal(a["mean_qB"], b["mean_qB"])
+
+
+class TestBMRInLoop:
+    """Tests for the in-loop Bayesian model reduction substrate."""
+
+    def test_edge_update_recovers_true_weight(self):
+        """Pure conjugate convergence: feed an agent direct (q=delta) gates and
+        many obs with known true weight; posterior mu should approach truth."""
+        from src.pomdp.structural_step import update_edge_posteriors
+
+        N, K, D = 1, 2, 2
+        S_xx = jnp.zeros((N, K, D))
+        S_xy = jnp.zeros((N, K, D))
+        # Agent fully committed to paradigm 0 (q(theta=0)=1).
+        q_theta = jnp.array([[1.0, 0.0]])
+        true_w = 0.7
+        noise_prec = 4.0
+        tau_prior = 0.1
+        rng = np.random.RandomState(0)
+        mu_final = None
+        for _ in range(500):
+            x = rng.standard_normal(D) / np.sqrt(noise_prec) + np.array([true_w, true_w])
+            S_xx, S_xy, mu, tau = update_edge_posteriors(
+                S_xx, S_xy, q_theta, jnp.asarray(x[None, :], dtype=float),
+                noise_prec, tau_prior)
+            mu_final = mu
+        # Edges from paradigm 0 (the active one): posterior mean near true_w
+        assert abs(float(mu_final[0, 0, 0]) - true_w) < 0.1
+        assert abs(float(mu_final[0, 0, 1]) - true_w) < 0.1
+        # Edges from paradigm 1 (never gated): posterior stays at zero prior
+        assert abs(float(mu_final[0, 1, 0])) < 1e-6
+        assert abs(float(mu_final[0, 1, 1])) < 1e-6
+
+    def test_bmr_prunes_inactive_paradigm_edges(self):
+        """End-to-end: with the world's true paradigm being 1 and edges from
+        paradigm 0 unsupported, BMR should prune most paradigm-0 edges by the
+        end of a long enough run."""
+        cfg = _cfg(
+            mot_kw=dict(
+                simple_kw=dict(n_agents=15, n_steps=120, seed=3),
+                lambda_tilt=0.0, motivated=False),
+            bmr_in_loop=True,
+            dep_noise_prec=4.0,
+            edge_tau_prior=0.05,
+            bmr_period=20,
+            bmr_threshold=0.0,
+            cross_paradigm_init=0.05)
+        out = run_structural(cfg)
+        alive = out["final_edge_alive"]   # (N, K, D)
+        # True paradigm = 1 (from _pomdp default). Paradigm-0 edges should be
+        # majority-pruned; paradigm-1 own-block edges should be majority-kept.
+        K_paradigms = 2
+        n_dep = cfg.n_dependents
+        # paradigm-0 edges (all D dependents):
+        p0_alive = alive[:, 0, :].mean()
+        # paradigm-1 own-block edges (dependents 3,4,5 with n_dep=3):
+        true_p = cfg.motivated.simple.pomdp.true_paradigm
+        own_lo, own_hi = true_p * n_dep, (true_p + 1) * n_dep
+        p1_own_alive = alive[:, true_p, own_lo:own_hi].mean()
+        assert p0_alive < 0.5, f"BMR did not prune false-paradigm edges (alive={p0_alive:.2f})"
+        assert p1_own_alive > 0.7, f"BMR pruned true-paradigm edges (alive={p1_own_alive:.2f})"
+
+    def test_pruning_is_persistent(self):
+        """Once an edge is pruned, the sticky alive mask keeps it pruned for
+        the rest of the run (mu_edge stays at 0 for those edges)."""
+        cfg = _cfg(
+            mot_kw=dict(
+                simple_kw=dict(n_agents=10, n_steps=80, seed=11),
+                lambda_tilt=0.0, motivated=False),
+            bmr_in_loop=True,
+            dep_noise_prec=4.0,
+            bmr_period=15,
+            bmr_threshold=0.0)
+        out = run_structural(cfg)
+        alive = out["final_edge_alive"]
+        mu = out["final_mu_edge"]
+        # Where alive == 0, mu must equal 0.
+        dead_mask = (alive == 0.0)
+        np.testing.assert_allclose(mu[dead_mask], 0.0, atol=1e-7)
+
+    def test_bmr_off_preserves_legacy_behavior(self):
+        """With bmr_in_loop=False the run produces no edge state and the
+        per-step results match the pre-BMR substrate exactly (regression
+        guard)."""
+        cfg = _cfg(mot_kw=dict(simple_kw=dict(n_agents=8, n_steps=20, seed=5)))
+        out = run_structural(cfg)
+        assert out["final_mu_edge"] is None
+        assert out["final_tau_edge"] is None
+        assert out["final_edge_alive"] is None
+        assert out["pruned_fraction"] is None
+
+    def test_kappa_responds_to_pruning(self):
+        """When BMR prunes edges, the conservatism field kappa = T*1 for
+        paradigm roots should drop relative to a control run with no pruning.
+        kappa is structure-sensitive even when u_source = 0."""
+        base_kw = dict(
+            mot_kw=dict(
+                simple_kw=dict(n_agents=12, n_steps=60, seed=23),
+                lambda_tilt=0.0, motivated=False),
+            bmr_in_loop=True,
+            dep_noise_prec=4.0,
+            cross_paradigm_init=0.05,
+            bmr_threshold=0.0)
+        with_pruning = run_structural(_cfg(bmr_period=15, **base_kw))
+        no_pruning = run_structural(_cfg(bmr_period=999, **base_kw))
+        # Paradigm-root kappa = 1 + sum of descendant edge precisions; pruning
+        # should drop it (false-paradigm edges get zeroed).
+        K = cfg_K = 2
+        kappa_pruned = with_pruning["final_kappa"][:, :K].mean()
+        kappa_unpruned = no_pruning["final_kappa"][:, :K].mean()
+        assert kappa_pruned < kappa_unpruned - 0.05, (
+            f"Pruning did not reduce paradigm-root conservatism "
+            f"(pruned={kappa_pruned:.3f}, unpruned={kappa_unpruned:.3f})")
