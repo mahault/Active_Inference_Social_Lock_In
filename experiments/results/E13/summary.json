@@ -1,0 +1,9 @@
+{
+  "trust_off_mean_qB": 0.9949861645698548,
+  "trust_on_mean_qB": 0.9948853492736817,
+  "trust_off_wrong_bloc_final": 0.9932023525238037,
+  "trust_on_wrong_bloc_final": 0.9929353336493174,
+  "trust_off_right_bloc_final": 0.9957506439515522,
+  "trust_on_right_bloc_final": 0.9957210634435926,
+  "trust_marginal_on_wrong_bloc": 0.00026701887448632444
+}
