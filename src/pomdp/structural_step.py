@@ -111,6 +111,144 @@ def build_default_dag(K_paradigms: int, n_dependents: int,
     return A
 
 
+def build_default_dag_with_cross_coupling(K_paradigms: int, n_dependents: int,
+                                          edge_precision: float,
+                                          cross_coupling: float = 0.0
+                                          ) -> jnp.ndarray:
+    """Extends `build_default_dag` with optional directed cross-paradigm edges.
+
+    For each ordered pair of paradigms (p, q) with p < q, adds A[p, q] =
+    cross_coupling. This creates an upper-triangular cross-paradigm structure
+    (still a DAG) where downstream paradigms inherit some upstream influence.
+    Setting cross_coupling = 0 recovers the original disconnected paradigms.
+    """
+    A = build_default_dag(K_paradigms, n_dependents, edge_precision)
+    if cross_coupling > 0.0:
+        for p in range(K_paradigms):
+            for q in range(p + 1, K_paradigms):
+                A = A.at[p, q].set(cross_coupling)
+    return A
+
+
+# ------------------------------------------------------------------
+# Schur complement
+# ------------------------------------------------------------------
+
+def build_precision_matrix(A: jnp.ndarray,
+                           D: jnp.ndarray | None = None) -> jnp.ndarray:
+    """Joint precision matrix Pi = (I - A)^T · D · (I - A) for a linear-Gaussian
+    structural equation model x = A·x + noise with noise precision diagonal D.
+
+    Defaults D = I (unit noise precision per node). Pi is symmetric positive
+    semi-definite. Off-diagonal entries encode conditional dependencies.
+    """
+    K_int = A.shape[0]
+    if D is None:
+        D = jnp.eye(K_int)
+    elif D.ndim == 1:
+        D = jnp.diag(D)
+    M = jnp.eye(K_int) - A
+    return M.T @ D @ M
+
+
+def schur_complement(Pi: jnp.ndarray, idx: int) -> jnp.ndarray:
+    """Schur complement: marginalize out node `idx` from precision matrix Pi.
+
+        Pi' = Pi[~idx, ~idx] - Pi[~idx, idx] · (1/Pi[idx, idx]) · Pi[idx, ~idx]
+
+    The residue (the second term) is the "carry-over" coupling that the
+    marginalization deposits on idx's neighbors. The IWAI paper calls this
+    the incommensurability term: marginalizing a hidden hub induces explicit
+    couplings among its dependents.
+
+    Args:
+        Pi: (K, K) precision matrix
+        idx: index of node to marginalize out
+
+    Returns:
+        Pi_reduced: (K-1, K-1) precision matrix over the remaining nodes
+    """
+    K = Pi.shape[0]
+    keep = [i for i in range(K) if i != idx]
+    keep_idx = jnp.asarray(keep)
+    P_kk = Pi[jnp.ix_(keep_idx, keep_idx)]
+    P_kv = Pi[keep_idx, idx]
+    P_vv = Pi[idx, idx]
+    return P_kk - jnp.outer(P_kv, P_kv) / (P_vv + 1e-12)
+
+
+def schur_residue(Pi: jnp.ndarray, idx: int) -> jnp.ndarray:
+    """The induced-coupling residue alone: Pi[~idx, idx] · (1/Pi[idx, idx]) · Pi[idx, ~idx]."""
+    K = Pi.shape[0]
+    keep = [i for i in range(K) if i != idx]
+    keep_idx = jnp.asarray(keep)
+    P_kv = Pi[keep_idx, idx]
+    P_vv = Pi[idx, idx]
+    return jnp.outer(P_kv, P_kv) / (P_vv + 1e-12)
+
+
+# ------------------------------------------------------------------
+# Bayesian model reduction — edge pruning via Savage-Dickey
+# ------------------------------------------------------------------
+
+def bmr_log_bayes_factor(mu_post: jnp.ndarray, tau_post: jnp.ndarray,
+                         tau_prior: jnp.ndarray) -> jnp.ndarray:
+    """Log Bayes factor for setting a Gaussian edge weight to zero (pruning it).
+
+    For a single edge weight w with:
+      prior:     w ~ N(0, 1/tau_prior)
+      posterior: w ~ N(mu_post, 1/tau_post)
+    the Savage-Dickey density ratio at w = 0 is the ratio of posterior to
+    prior densities at zero:
+        BF = p(w=0 | data) / p(w=0 | prior)
+           = sqrt(tau_post / tau_prior) · exp(-0.5 · mu_post^2 · tau_post)
+
+    LOG BF > 0 → prune the edge (data does not support a nonzero weight).
+    LOG BF < 0 → keep the edge (posterior concentrates away from zero).
+
+    Operates element-wise on arrays of edge weights/precisions.
+    """
+    log_ratio_norm = 0.5 * jnp.log((tau_post + EPS) / (tau_prior + EPS))
+    log_density_term = -0.5 * mu_post * mu_post * tau_post
+    return log_ratio_norm + log_density_term
+
+
+def bmr_prune(A: jnp.ndarray, log_bf: jnp.ndarray,
+              threshold: float = 0.0) -> jnp.ndarray:
+    """Zero out edges in A where log BF exceeds threshold.
+
+    A: (K, K) adjacency. log_bf: same shape, log Bayes factor per (parent, child) cell.
+    Returns the pruned adjacency.
+    """
+    keep_mask = (log_bf <= threshold).astype(A.dtype)
+    return A * keep_mask
+
+
+# ------------------------------------------------------------------
+# Structure-learning expansion — propose new node with tentative edges
+# ------------------------------------------------------------------
+
+def expand_propose_node(A: jnp.ndarray,
+                        tentative_precision: float = 0.1) -> jnp.ndarray:
+    """Propose a new node by appending a row and column to A.
+
+    The new node (index K) is wired to every existing node with tentative
+    bidirectional edges at low precision (tentative_precision). After BMR,
+    most of these will be pruned; the surviving edges are the data-supported
+    structural revision.
+
+    Returns: (K+1, K+1) expanded adjacency.
+    """
+    K = A.shape[0]
+    new_A = jnp.zeros((K + 1, K + 1), dtype=A.dtype)
+    new_A = new_A.at[:K, :K].set(A)
+    # Outgoing tentative edges from new node to existing nodes
+    new_A = new_A.at[K, :K].set(tentative_precision)
+    # Incoming tentative edges from existing nodes to new node
+    new_A = new_A.at[:K, K].set(tentative_precision)
+    return new_A
+
+
 def compute_T(A: jnp.ndarray) -> jnp.ndarray:
     """T = (I - A)^{-1}. For a nilpotent DAG, this is a finite series.
 
