@@ -1,0 +1,12 @@
+{
+  "False": {
+    "phase1_peak": 0.8070661500096321,
+    "mean_just_before_reverse": 0.7984821140766144,
+    "mean_final": 0.11870547384023666
+  },
+  "True": {
+    "phase1_peak": 0.14795317314565182,
+    "mean_just_before_reverse": 0.14714568555355073,
+    "mean_final": 0.14714727122336627
+  }
+}

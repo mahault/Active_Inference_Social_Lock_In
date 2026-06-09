@@ -1,0 +1,61 @@
+experiment:
+  name: E12_resource_hysteresis
+  description: >
+    Resource hysteresis: truth shifts to paradigm 1 at t=80, then reverses
+    back to paradigm 0 at t=200. With resource_coupling OFF, the population
+    follows the truth. With resource_coupling ON, the wrong-paradigm bloc
+    becomes resource-starved during the first regime, cannot afford
+    high-Fisher experiments, and CANNOT recover when truth reverses.
+    The asymmetry between forward and reverse trajectories IS the
+    hysteresis signature -- material lock-in is path-dependent in a way
+    no other channel produces.
+
+model_type: cont
+
+base:
+  pomdp:
+    n_paradigms: 2
+    theta_vals: [0.0, 1.0]
+    true_paradigm: 1
+    x_grid: [0.1, 0.3, 0.5, 0.8, 1.0]
+    n_o: 5
+    q_reliability: 0.65
+    D0: [0.5, 0.5]
+    world:
+      schedule: reversal
+      theta_star_pre: 0.0
+      theta_star_post: 1.0
+      schedule_t_shift: 60
+      schedule_t_reverse: 180
+  lambda_init: 2.5
+  eta_lambda: 0.0
+  kl_target: 0.05
+  eps_theta: 0.15
+  obs_x_index: 4
+  n_agents: 30
+  n_steps: 320
+  use_theta_schedule: true
+  graph_kind: watts_strogatz
+  mean_degree: 4
+  social_mask: 1.0
+  trust_learning: true
+  trust_rho: 0.95
+  trust_alpha0: 1.0
+  trust_beta0: 1.0
+  resource_coupling: false
+  r_init: 1.0
+  R_in: 0.03
+  alpha_flow: 0.6
+  delta_decay: 0.04
+  c0: 0.30
+  r_min: 0.15
+  budget_fraction: 0.5
+  maverick_fraction: 0.0
+
+sweep:
+  resource_coupling: [false, true]
+
+seeds: [0, 1, 2, 3, 4, 5, 6, 7]
+
+outputs:
+  dir: experiments/results/E12
