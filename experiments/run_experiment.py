@@ -1,12 +1,13 @@
 """Experiment runner: loads YAML config, expands sweep grid, runs experiments.
 
-Supports two model types (set via model_type field in YAML):
-  "simple"  — SimpleConfig / run_simple (hierarchical context model)
-  "cont"    — ContConfig / run_cont (continuous lambda model)
+Supports three model types (set via model_type field in YAML):
+  "simple"     — SimpleConfig / run_simple (hierarchical context model)
+  "cont"       — ContConfig / run_cont (continuous lambda model)
+  "motivated"  — MotivatedConfig / run_motivated (simple + per-agent utility tilt)
 
 Usage:
     python -m experiments.run_experiment experiments/configs/E1_stationary.yaml
-    python -m experiments.run_experiment experiments/configs/E4_cont_lambda.yaml --dry-run
+    python -m experiments.run_experiment experiments/configs/E9_motivated_update.yaml --dry-run
 """
 
 from __future__ import annotations
@@ -24,6 +25,7 @@ from src.config import WorldConfig
 from src.pomdp.gen_model import PomdpConfig
 from src.pomdp.simple_step import SimpleConfig, run_simple
 from src.pomdp.cont_step import ContConfig, run_cont
+from src.pomdp.motivated_step import MotivatedConfig, run_motivated
 
 
 def _build_world_config(d: dict) -> WorldConfig:
@@ -143,6 +145,68 @@ def run_single_cont(cfg: ContConfig, social_mask: np.ndarray | None = None) -> d
     return result
 
 
+def _build_motivated_config(base: dict, overrides: dict, seed: int) -> MotivatedConfig:
+    """Construct a MotivatedConfig from a YAML base dict + sweep overrides.
+
+    Recognized top-level base keys: lambda_tilt, motivated. Everything else is
+    threaded into the nested SimpleConfig (including pomdp).
+    """
+    motivated_keys = set(MotivatedConfig.__dataclass_fields__) - {"simple"}
+    motivated_kw = {}
+    simple_base = dict(base)  # we'll strip motivated-only keys from this
+    for k in list(simple_base.keys()):
+        if k in motivated_keys:
+            motivated_kw[k] = simple_base.pop(k)
+    # The remaining base is suitable for SimpleConfig
+    simple_cfg = _build_simple_config(simple_base, overrides, seed)
+    # Sweep overrides may target motivated-only keys too
+    for k, v in overrides.items():
+        if k in motivated_keys:
+            motivated_kw[k] = v
+    return MotivatedConfig(simple=simple_cfg, **motivated_kw)
+
+
+def _build_U_per_agent(cfg: MotivatedConfig, exp: dict) -> np.ndarray | None:
+    """Build per-agent utility vector U(theta) from the YAML.
+
+    Supports a simple specification: utility_tilt_fraction = fraction of
+    agents whose utility prefers the WRONG paradigm (1−true_paradigm). The
+    other agents prefer the TRUE paradigm. Magnitudes are
+    utility_pro / utility_anti (default ±1).
+    """
+    frac = exp.get("base", {}).get("utility_tilt_fraction", 0.0)
+    if frac <= 0.0:
+        return None
+    pro_mag = exp.get("base", {}).get("utility_pro", 1.0)
+    anti_mag = exp.get("base", {}).get("utility_anti", 1.0)
+    K = cfg.simple.pomdp.n_paradigms
+    true_idx = cfg.simple.pomdp.true_paradigm
+    rng = np.random.RandomState(cfg.simple.seed)
+    N = cfg.simple.n_agents
+    is_anti = rng.rand(N) < frac
+    U = np.zeros((N, K))
+    # Pro agents: positive utility on truth, zero elsewhere
+    U[~is_anti, true_idx] = pro_mag
+    # Anti agents: positive utility on the wrong paradigm(s)
+    for k in range(K):
+        if k != true_idx:
+            U[is_anti, k] = anti_mag
+    return U
+
+
+def run_single_motivated(cfg: MotivatedConfig,
+                         social_mask: np.ndarray | None = None,
+                         U_per_agent: np.ndarray | None = None) -> dict:
+    out = run_motivated(cfg, social_mask_per_agent=social_mask,
+                        U_per_agent=U_per_agent)
+    return {
+        "final_mean_qB": float(out["mean_qB"][-1]),
+        "final_occ_B": float(out["occ_B"][-1]),
+        "mean_qB_trajectory": out["mean_qB"].tolist(),
+        "theta_star_trace": out["theta_star_trace"].tolist(),
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description="Run theory-ladenness experiments")
     parser.add_argument("config", type=str, help="Path to YAML experiment config")
@@ -178,6 +242,12 @@ def main():
                 cfg = _build_cont_config(exp["base"], sp, seed)
                 social_mask = _build_social_mask_generic(cfg, exp)
                 result = run_single_cont(cfg, social_mask)
+            elif model_type == "motivated":
+                cfg = _build_motivated_config(exp["base"], sp, seed)
+                # Generic mask builder works on any cfg with n_agents + seed
+                social_mask = _build_social_mask_generic(cfg.simple, exp)
+                U = _build_U_per_agent(cfg, exp)
+                result = run_single_motivated(cfg, social_mask, U)
             else:
                 cfg = _build_simple_config(exp["base"], sp, seed)
                 social_mask = _build_social_mask(cfg, exp)
