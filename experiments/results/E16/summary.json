@@ -1,0 +1,13 @@
+{
+  "control (channels off)": {
+    "pop_final": 0.15832779467105865,
+    "mainstream_final": 0.16856059432029724,
+    "dissident_final": 0.17030847072601318
+  },
+  "full mechanism (trust + rsrc)": {
+    "pop_final": 0.8056151080131531,
+    "mainstream_final": 0.8056639432907104,
+    "dissident_final": 0.8056280016899109
+  },
+  "hysteresis_gap": 0.6472873133420944
+}
