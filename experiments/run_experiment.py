@@ -26,6 +26,7 @@ from src.pomdp.gen_model import PomdpConfig
 from src.pomdp.simple_step import SimpleConfig, run_simple
 from src.pomdp.cont_step import ContConfig, run_cont
 from src.pomdp.motivated_step import MotivatedConfig, run_motivated
+from src.pomdp.structural_step import StructuralConfig, run_structural
 
 
 def _build_world_config(d: dict) -> WorldConfig:
@@ -207,6 +208,66 @@ def run_single_motivated(cfg: MotivatedConfig,
     }
 
 
+def _build_structural_config(base: dict, overrides: dict, seed: int) -> StructuralConfig:
+    structural_keys = set(StructuralConfig.__dataclass_fields__) - {"motivated"}
+    structural_kw = {}
+    motivated_base = dict(base)
+    for k in list(motivated_base.keys()):
+        if k in structural_keys:
+            structural_kw[k] = motivated_base.pop(k)
+    mot_cfg = _build_motivated_config(motivated_base, overrides, seed)
+    for k, v in overrides.items():
+        if k in structural_keys:
+            structural_kw[k] = v
+    return StructuralConfig(motivated=mot_cfg, **structural_kw)
+
+
+def _build_u_source(cfg: StructuralConfig, exp: dict) -> np.ndarray | None:
+    """Build per-agent source utility vector over K_int = K * (1 + n_dependents)
+    internal nodes. Same logic as _build_U_per_agent but applies to dependents:
+    a fraction of agents have positive u on dependents of the wrong paradigm,
+    the rest on dependents of the true paradigm. Magnitudes via utility_pro /
+    utility_anti."""
+    frac = exp.get("base", {}).get("utility_tilt_fraction", 0.0)
+    if frac <= 0.0:
+        return None
+    pro_mag = exp.get("base", {}).get("utility_pro", 1.0)
+    anti_mag = exp.get("base", {}).get("utility_anti", 1.0)
+    K = cfg.motivated.simple.pomdp.n_paradigms
+    n_dep = cfg.n_dependents
+    K_int = K * (1 + n_dep)
+    true_idx = cfg.motivated.simple.pomdp.true_paradigm
+    rng = np.random.RandomState(cfg.motivated.simple.seed)
+    N = cfg.motivated.simple.n_agents
+    is_anti = rng.rand(N) < frac
+    u = np.zeros((N, K_int))
+    # Per-paradigm dependent block starts at K + paradigm_idx * n_dep
+    for p in range(K):
+        block_start = K + p * n_dep
+        block_end = block_start + n_dep
+        if p == true_idx:
+            # pro-truth agents put positive utility on these dependents
+            u[~is_anti, block_start:block_end] = pro_mag
+        else:
+            u[is_anti, block_start:block_end] = anti_mag
+    return u
+
+
+def run_single_structural(cfg: StructuralConfig,
+                          social_mask: np.ndarray | None = None,
+                          u_source: np.ndarray | None = None) -> dict:
+    out = run_structural(cfg, social_mask_per_agent=social_mask,
+                         u_source_per_agent=u_source)
+    return {
+        "final_mean_qB": float(out["mean_qB"][-1]),
+        "final_occ_B": float(out["occ_B"][-1]),
+        "final_evidence_weight": float(out["mean_evidence_weight"][-1]),
+        "final_conviction_asymmetry": float(out["mean_conviction_asymmetry"][-1]),
+        "mean_qB_trajectory": out["mean_qB"].tolist(),
+        "theta_star_trace": out["theta_star_trace"].tolist(),
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description="Run theory-ladenness experiments")
     parser.add_argument("config", type=str, help="Path to YAML experiment config")
@@ -248,6 +309,11 @@ def main():
                 social_mask = _build_social_mask_generic(cfg.simple, exp)
                 U = _build_U_per_agent(cfg, exp)
                 result = run_single_motivated(cfg, social_mask, U)
+            elif model_type == "structural":
+                cfg = _build_structural_config(exp["base"], sp, seed)
+                social_mask = _build_social_mask_generic(cfg.motivated.simple, exp)
+                u_src = _build_u_source(cfg, exp)
+                result = run_single_structural(cfg, social_mask, u_src)
             else:
                 cfg = _build_simple_config(exp["base"], sp, seed)
                 social_mask = _build_social_mask(cfg, exp)
