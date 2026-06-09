@@ -59,8 +59,15 @@ class SimpleConfig:
     # initial context prior
     D_c_normal: float = 0.9      # initial P(c=0) — starts in normal science
 
-    # partial theory-ladenness: how much c=0 averages away discriminability
-    alpha_tl: float = 1.0        # 1.0=fully averaged (current), 0.0=no averaging
+    # partial theory-ladenness blend in build_joint_A_world. This is a
+    # MODELING CHOICE on the generative-model side: per context level c,
+    # the per-paradigm likelihood column is mixed (1-alpha_c) with the
+    # paradigm-averaged column at weight alpha_c. Equivalent to placing a
+    # context-conditional mixture prior over "discriminating vs averaged"
+    # likelihoods. Inference downstream is exact categorical Bayes on the
+    # resulting A_joint; the blending is in the generative model, not in
+    # the update rule.
+    alpha_tl: float = 1.0        # 1.0=fully averaged at c=0, 0.0=no averaging
 
     # paradigm leak: small drift of theta belief toward uniform each step
     eps_theta: float = 0.0       # 0.0=absorbing (B_theta=identity), >0=leaky
@@ -235,7 +242,15 @@ def sample_observations(A_world_orig: jnp.ndarray, cfg: SimpleConfig,
 
 def affordable_experiment(r: jnp.ndarray, x_grid: tuple,
                           cfg: SimpleConfig) -> jnp.ndarray:
-    """Per-agent experiment index: highest x the agent can afford."""
+    """Per-agent experiment index: highest x the agent can afford.
+
+    BUDGET CONSTRAINT, not a Bayesian policy. The agent simply picks the
+    most-discriminating experiment whose Fisher-info-scaled cost is below
+    `budget_fraction * r`. This replaces the EFE-based policy from the
+    POMDP scaffold per David Hyland's suggestion to drop the action loop.
+    To recover a soft Bayesian policy, plug back the EFE-softmax from
+    src/pomdp/step.py at the cost of the martingale wall.
+    """
     x = jnp.array(x_grid)
     h1_vals = h1(x, cfg.pomdp.world)
     fisher = h1_vals ** 2 / (cfg.pomdp.world.sigma ** 2)

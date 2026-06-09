@@ -30,10 +30,19 @@ Two new mechanisms layered on top of motivated_step:
    precision level, so the susceptibility of the posterior to
    disconfirming observations collapses.
 
-What this still does NOT do (out of scope here):
-- Bayesian model reduction over the DAG (no edge pruning)
-- Structure-learning expansion (no proposing new nodes)
-- The Schur-complement residue analysis of marginalized hubs
+In-loop structure inference (limitation):
+The BMR, expansion, and Schur utilities below are available as one-off
+operations (callable directly from analysis scripts; see
+scripts/demo_structural_phlogiston.py for a closed-form, conjugate-inference
+demonstration). They are NOT wired into the per-step multi-agent simulation
+because the simulation generates observations about the latent paradigm only,
+not about the subsidiary commitment nodes. Running BMR in-the-loop without
+per-edge evidence would be ceremonial: the posterior over each edge weight
+would not move from the prior, and BMR's verdict would be a function of the
+prior alone. The principled choice is to keep the DAGs fixed during a
+simulation run and to use BMR/expansion as analysis tools on offline data
+(or in a future extension that also samples observations on dependent
+nodes).
 """
 
 from __future__ import annotations
@@ -389,9 +398,14 @@ def structural_step(state: StructuralState,
     asym = conviction_asymmetry(U_paradigm)                 # (N,)
     w_evidence = evidence_weight(asym, cfg.gamma_strength)  # (N,)
 
-    # 6. INFER (with attenuated world LL via the social_mask analog on
-    #    the world channel — we scale the world likelihood by w_evidence
-    #    per agent by computing the inference twice and blending).
+    # 6. INFER with attenuated world likelihood. We scale the world LL
+    #    contribution by w_evidence per agent. Identity:
+    #         log q_target = log_prior + w · ll_world + ll_social
+    #                      = w · log q_full + (1-w) · log q_no_world  (+ const)
+    #    where q_no_world is the posterior using a zero-observation vector
+    #    so that ll_world contributes exactly zero. The constants drop out
+    #    of the softmax renormalization. This is mathematically equivalent
+    #    to scaling p(o|theta,a) by an exponent of w_evidence per agent.
     actions_arr = actions
     mask_social = social_mask
 
@@ -400,13 +414,15 @@ def structural_step(state: StructuralState,
         q_prior, gm_joint["A_world_joint"], o_world, actions_arr,
         gm_joint["A_social_joint"], o_social, mask_social)
 
-    # Inference with zero world evidence (only social + prior)
-    o_world_blank = jnp.ones_like(o_world) / o_world.shape[1]
+    # Inference with zero world evidence: o_world=0 -> ll_world = 0.
+    # (Uniform observations would leave a state-dependent entropy term.)
+    o_world_blank = jnp.zeros_like(o_world)
     q_no_world = agent_pop.infer_state_batch(
         q_prior, gm_joint["A_world_joint"], o_world_blank, actions_arr,
         gm_joint["A_social_joint"], o_social, mask_social)
 
-    # Blend by per-agent evidence weight: w=1 → full evidence; w=0 → no evidence
+    # Log-blend by per-agent evidence weight; softmax renormalizes the
+    # constant offsets away, leaving the principled scaled-likelihood form.
     w_b = w_evidence[:, None]                              # (N, 1)
     log_full = jnp.log(q_full + EPS)
     log_no = jnp.log(q_no_world + EPS)

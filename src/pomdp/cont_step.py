@@ -9,13 +9,15 @@ continuous lambda_i that tempers the likelihood in the Bayes update:
   lambda > 1.0 : underweight evidence (conservative, theory-laden)
   lambda → ∞   : beliefs frozen to prior
 
-Lambda evolves based on the KL cost of the previous update:
+This is the principled core: tempered Bayesian inference at a per-agent
+temperature. Lambda is treated as a (per-agent) hyperparameter, set at init.
 
-    delta_kl_i = KL[q_i(t) || q_i(t-1)]
-    lambda_i(t+1) = lambda_i(t) + eta * (delta_kl - kl_target)
-
-Large updates → lambda increases ("that hurt, be more careful"). Small updates
-→ lambda drifts down. This is the variational cost of mind-change, formalized.
+`update_lambda` exposes an OPTIONAL homeostatic regulator that drives lambda
+toward a KL-comfort zone via a PI-style controller rule. This is NOT derived
+from free energy minimization -- it is an explicitly heuristic meta-rule and
+is DISABLED by default (eta_lambda=0.0). Enable only when you specifically
+want to study a self-regulating-temperature variant; document it as such
+when reporting results.
 
 Optional resource coupling: agents with low r can only afford low-discriminability
 experiments, gating exploration via social structure.
@@ -59,7 +61,10 @@ class ContConfig:
     lambda_init: float = 1.5
     lambda_min: float = 0.5
     lambda_max: float = 5.0
-    eta_lambda: float = 0.1
+    # eta_lambda > 0 enables the homeostatic KL-comfort controller on lambda.
+    # That rule is a HEURISTIC, not derived from free energy minimization, so
+    # the default is 0.0 (static lambda -- pure principled tempered Bayes).
+    eta_lambda: float = 0.0
     kl_target: float = 0.05
 
     # paradigm leak: prevents absorbing prior after extended commitment
@@ -161,10 +166,18 @@ def kl_categorical(p: jax.Array, q: jax.Array) -> jax.Array:
 def update_lambda(lam: jnp.ndarray, q_new: jnp.ndarray, q_old: jnp.ndarray,
                   eta: float, kl_target: float,
                   lam_min: float, lam_max: float) -> jnp.ndarray:
-    """Update per-agent lambda from KL cost of previous update.
+    """HEURISTIC homeostatic regulator on per-agent lambda.
 
-    delta_kl > kl_target → lambda increases (more conservative).
-    delta_kl < kl_target → lambda decreases (more responsive).
+    Rule: lam_new = lam + eta * (KL[q_new || q_old] - kl_target).
+
+    delta_kl > kl_target -> lambda increases (more conservative).
+    delta_kl < kl_target -> lambda decreases (more responsive).
+
+    This is a PI-style controller pulling KL toward a comfort zone. It is
+    NOT derived from free-energy minimization and is not part of the
+    Hyland & Albarracin (2025) variational formalism. Disable (eta=0) for
+    the principled default. Use when you specifically want self-regulating
+    temperature, and report it explicitly as a heuristic add-on.
     """
     delta_kl = jax.vmap(kl_categorical)(q_new, q_old)         # (N,)
     lam_new = lam + eta * (delta_kl - kl_target)
