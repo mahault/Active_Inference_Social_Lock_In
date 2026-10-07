@@ -1,0 +1,1724 @@
+{
+ "contrasts": [
+  {
+   "mean_A": 0.5324362490511632,
+   "mean_B": 0.48461272745715844,
+   "mean_diff": 0.047823521594004714,
+   "ci95": [
+    0.02821066857053769,
+    0.06677921703664519
+   ],
+   "p": 0.009786486727077012,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers sixth]",
+   "metric": "end_pM",
+   "p_holm": 0.28380811508523335,
+   "survives_holm": false
+  },
+  {
+   "mean_A": 0.5091111111111112,
+   "mean_B": 0.425,
+   "mean_diff": 0.08411111111111119,
+   "ci95": [
+    0.04088819444444464,
+    0.12611250000000016
+   ],
+   "p": 0.012737538398468565,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers sixth]",
+   "metric": "frac_agents_reach",
+   "p_holm": 0.3566510751571198,
+   "survives_holm": false
+  },
+  {
+   "mean_A": -1.0345393814633055,
+   "mean_B": -1.1501041263545795,
+   "mean_diff": 0.115564744891274,
+   "ci95": [
+    0.07047313879099318,
+    0.15673512061282938
+   ],
+   "p": 0.0010140986852160438,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers sixth]",
+   "metric": "log_score",
+   "p_holm": 0.0324511579269134,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 431.4888888888889,
+   "mean_B": 448.37222222222215,
+   "mean_diff": -16.88333333333327,
+   "ci95": [
+    -22.711111111111165,
+    -11.17222222222216
+   ],
+   "p": 7.389112793931539e-05,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers sixth]",
+   "metric": "t_reach",
+   "p_holm": 0.0031034273734512467,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.011321861554426755,
+   "mean_B": 0.05699057950943552,
+   "mean_diff": -0.045668717955008764,
+   "ci95": [
+    -0.05120328379124909,
+    -0.0362774493167169
+   ],
+   "p": 0.0005,
+   "test": "bootstrap (2000) sign test on SD difference (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers sixth]",
+   "metric": "across-seed SD of end P(M>0) (lottery)",
+   "p_holm": 0.0205,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.18684121688482863,
+   "mean_B": 0.16922026378693855,
+   "mean_diff": 0.01762095309789008,
+   "ci95": [
+    0.01036733472322071,
+    0.025129875789663775
+   ],
+   "p": 3.7051159705629385e-05,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers sixth]",
+   "metric": "end_pM",
+   "p_holm": 0.0015931998673420636,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.006888888888888887,
+   "mean_B": 0.0034722222222222225,
+   "mean_diff": 0.0034166666666666646,
+   "ci95": [
+    0.0005000000000000004,
+    0.006
+   ],
+   "p": 0.005508410080287194,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers sixth]",
+   "metric": "frac_agents_reach",
+   "p_holm": 0.1652523024086158,
+   "survives_holm": false
+  },
+  {
+   "mean_A": -1.8211520583774363,
+   "mean_B": -1.8923903249284784,
+   "mean_diff": 0.07123826655104204,
+   "ci95": [
+    0.025259343041466927,
+    0.11920821393627652
+   ],
+   "p": 0.0043201840403311225,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers sixth]",
+   "metric": "log_score",
+   "p_holm": 0.1339257052502648,
+   "survives_holm": false
+  },
+  {
+   "mean_A": 520.0,
+   "mean_B": 520.0,
+   "mean_diff": 0.0,
+   "ci95": [
+    0.0,
+    0.0
+   ],
+   "p": 1.0,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers sixth]",
+   "metric": "t_reach",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_A": 0.006757837705778456,
+   "mean_B": 0.018262944100240305,
+   "mean_diff": -0.01150510639446185,
+   "ci95": [
+    -0.015025440643781827,
+    -0.006518837057814785
+   ],
+   "p": 0.0005,
+   "test": "bootstrap (2000) sign test on SD difference (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers sixth]",
+   "metric": "across-seed SD of end P(M>0) (lottery)",
+   "p_holm": 0.0205,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.6061557865396223,
+   "mean_B": 0.5915794883520753,
+   "mean_diff": 0.014576298187547021,
+   "ci95": [
+    0.010561593764112795,
+    0.018482357864348136
+   ],
+   "p": 1.8029691721083094e-06,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers sixth]",
+   "metric": "end_pM",
+   "p_holm": 8.293658191698223e-05,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.11916666666666667,
+   "mean_B": 0.10972222222222223,
+   "mean_diff": 0.009444444444444436,
+   "ci95": [
+    -0.0011944444444444285,
+    0.023500000000000007
+   ],
+   "p": 1.0,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers sixth]",
+   "metric": "frac_agents_reach",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_A": -0.5131799739714348,
+   "mean_B": -0.5354932705059635,
+   "mean_diff": 0.022313296534528737,
+   "ci95": [
+    0.01633275313837745,
+    0.028395730453572028
+   ],
+   "p": 1.0472741665207472e-06,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers sixth]",
+   "metric": "log_score",
+   "p_holm": 5.0269159992995865e-05,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 465.4444444444445,
+   "mean_B": 466.3,
+   "mean_diff": -0.8555555555554974,
+   "ci95": [
+    -1.166666666666515,
+    -0.5777777777778382
+   ],
+   "p": 1.1322312985213794e-06,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers sixth]",
+   "metric": "t_reach",
+   "p_holm": 5.321487103050483e-05,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.0037596587479079135,
+   "mean_B": 0.00978795171733099,
+   "mean_diff": -0.006028292969423076,
+   "ci95": [
+    -0.007909398546098192,
+    -0.0038469071550439886
+   ],
+   "p": 0.0005,
+   "test": "bootstrap (2000) sign test on SD difference (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers sixth]",
+   "metric": "across-seed SD of end P(M>0) (lottery)",
+   "p_holm": 0.0205,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.38446715754075644,
+   "mean_B": 0.41825771909953635,
+   "mean_diff": -0.03379056155877991,
+   "ci95": [
+    -0.053618451476867904,
+    -0.01640345763805176
+   ],
+   "p": 0.000509072918078457,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers sixth]",
+   "metric": "end_pM",
+   "p_holm": 0.0205,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.1161111111111111,
+   "mean_B": 0.12152777777777776,
+   "mean_diff": -0.005416666666666667,
+   "ci95": [
+    -0.014556250000000014,
+    0.0031388888888889133
+   ],
+   "p": 0.07729941090004933,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers sixth]",
+   "metric": "frac_agents_reach",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_A": -1.0776829122768015,
+   "mean_B": -1.022119784617457,
+   "mean_diff": -0.05556312765934446,
+   "ci95": [
+    -0.11766552016743836,
+    0.004496943318528765
+   ],
+   "p": 0.023903145867558404,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers sixth]",
+   "metric": "log_score",
+   "p_holm": 0.645384938424077,
+   "survives_holm": false
+  },
+  {
+   "mean_A": 480.96111111111105,
+   "mean_B": 474.37777777777785,
+   "mean_diff": 6.583333333333201,
+   "ci95": [
+    4.711111111111107,
+    8.400000000000091
+   ],
+   "p": 3.0398112386622006e-06,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers sixth]",
+   "metric": "t_reach",
+   "p_holm": 0.00013375169450113682,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.010883481528094933,
+   "mean_B": 0.04844887219306127,
+   "mean_diff": -0.037565390664966336,
+   "ci95": [
+    -0.05472559874183487,
+    -0.013953485421270213
+   ],
+   "p": 0.0005,
+   "test": "bootstrap (2000) sign test on SD difference (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers sixth]",
+   "metric": "across-seed SD of end P(M>0) (lottery)",
+   "p_holm": 0.0205,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.3718787567540656,
+   "mean_B": 0.5436889280962535,
+   "mean_diff": -0.17181017134218785,
+   "ci95": [
+    -0.1764778238155814,
+    -0.16720473382915774
+   ],
+   "p": 6.79561512817336e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers four]",
+   "metric": "end_pM",
+   "p_holm": 3.857144837671883e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.3253333333333333,
+   "mean_B": 0.45902777777777776,
+   "mean_diff": -0.13369444444444445,
+   "ci95": [
+    -0.14866736111111117,
+    -0.12088888888888893
+   ],
+   "p": 2.8998738374573775e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers four]",
+   "metric": "frac_agents_reach",
+   "p_holm": 1.7399243024744265e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": -1.4104681863344852,
+   "mean_B": -0.9973598043198019,
+   "mean_diff": -0.41310838201468336,
+   "ci95": [
+    -0.4319303135452033,
+    -0.39481199351435536
+   ],
+   "p": 6.79561512817336e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers four]",
+   "metric": "log_score",
+   "p_holm": 3.857144837671883e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 480.9833333333333,
+   "mean_B": 372.5722222222222,
+   "mean_diff": 108.4111111111111,
+   "ci95": [
+    106.37208333333326,
+    110.43333333333334
+   ],
+   "p": 6.766920767845409e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers four]",
+   "metric": "t_reach",
+   "p_holm": 3.857144837671883e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.00767046404140834,
+   "mean_B": 0.017933593726021865,
+   "mean_diff": -0.010263129684613525,
+   "ci95": [
+    -0.01323637366958016,
+    -0.006326379556124956
+   ],
+   "p": 0.0005,
+   "test": "bootstrap (2000) sign test on SD difference (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [pluralist, observers four]",
+   "metric": "across-seed SD of end P(M>0) (lottery)",
+   "p_holm": 0.0205,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.14118164091121224,
+   "mean_B": 0.2716164469209108,
+   "mean_diff": -0.13043480600969856,
+   "ci95": [
+    -0.13671793803137391,
+    -0.12375746766802719
+   ],
+   "p": 6.79561512817336e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers four]",
+   "metric": "end_pM",
+   "p_holm": 3.857144837671883e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.0003333333333333333,
+   "mean_B": 0.11736111111111111,
+   "mean_diff": -0.11702777777777777,
+   "ci95": [
+    -0.12177777777777776,
+    -0.11275
+   ],
+   "p": 2.1954868316066028e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers four]",
+   "metric": "frac_agents_reach",
+   "p_holm": 1.3392469672800277e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": -1.990444208784626,
+   "mean_B": -1.6512688998866658,
+   "mean_diff": -0.3391753088979601,
+   "ci95": [
+    -0.3764942848104797,
+    -0.29878433350351064
+   ],
+   "p": 6.79561512817336e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers four]",
+   "metric": "log_score",
+   "p_holm": 3.857144837671883e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 520.0,
+   "mean_B": 464.62777777777774,
+   "mean_diff": 55.37222222222226,
+   "ci95": [
+    55.2000000000001,
+    55.5333333333333
+   ],
+   "p": 7.576616483387661e-09,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers four]",
+   "metric": "t_reach",
+   "p_holm": 4.849034549368103e-07,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.004549933457311658,
+   "mean_B": 0.018373155489422616,
+   "mean_diff": -0.013823222032110958,
+   "ci95": [
+    -0.017380315772150132,
+    -0.009029784344063426
+   ],
+   "p": 0.0005,
+   "test": "bootstrap (2000) sign test on SD difference (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [committed, observers four]",
+   "metric": "across-seed SD of end P(M>0) (lottery)",
+   "p_holm": 0.0205,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.5620502734555973,
+   "mean_B": 0.6396908944714985,
+   "mean_diff": -0.07764062101590119,
+   "ci95": [
+    -0.08147656106428784,
+    -0.0738527823956587
+   ],
+   "p": 6.79561512817336e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers four]",
+   "metric": "end_pM",
+   "p_holm": 3.857144837671883e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.005888888888888887,
+   "mean_B": 0.18819444444444444,
+   "mean_diff": -0.18230555555555555,
+   "ci95": [
+    -0.19769444444444442,
+    -0.1658604166666667
+   ],
+   "p": 5.150986500880816e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers four]",
+   "metric": "frac_agents_reach",
+   "p_holm": 3.0390820355196814e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": -0.5795585727274235,
+   "mean_B": -0.46679257388686085,
+   "mean_diff": -0.11276599884056265,
+   "ci95": [
+    -0.11877424476896958,
+    -0.10686609921961213
+   ],
+   "p": 6.79561512817336e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers four]",
+   "metric": "log_score",
+   "p_holm": 3.857144837671883e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 520.0,
+   "mean_B": 406.90555555555557,
+   "mean_diff": 113.09444444444443,
+   "ci95": [
+    110.16111111111115,
+    118.79999999999995
+   ],
+   "p": 7.803297803031608e-09,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers four]",
+   "metric": "t_reach",
+   "p_holm": 4.916077615909913e-07,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.003678787084922443,
+   "mean_B": 0.009391778687231733,
+   "mean_diff": -0.00571299160230929,
+   "ci95": [
+    -0.007712110568343946,
+    -0.0030943599256946534
+   ],
+   "p": 0.0005,
+   "test": "bootstrap (2000) sign test on SD difference (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [neutral, observers four]",
+   "metric": "across-seed SD of end P(M>0) (lottery)",
+   "p_holm": 0.0205,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.32252001780498407,
+   "mean_B": 0.4751384972408971,
+   "mean_diff": -0.152618479435913,
+   "ci95": [
+    -0.17615114863067713,
+    -0.12835557039033296
+   ],
+   "p": 6.79561512817336e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers four]",
+   "metric": "end_pM",
+   "p_holm": 3.857144837671883e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.003999999999999999,
+   "mean_B": 0.16319444444444445,
+   "mean_diff": -0.15919444444444444,
+   "ci95": [
+    -0.16911180555555555,
+    -0.1489722222222222
+   ],
+   "p": 5.885649841553882e-08,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers four]",
+   "metric": "frac_agents_reach",
+   "p_holm": 3.4136769081012515e-06,
+   "survives_holm": true
+  },
+  {
+   "mean_A": -1.2115698920406177,
+   "mean_B": -0.855504179699086,
+   "mean_diff": -0.3560657123415317,
+   "ci95": [
+    -0.4253393228040889,
+    -0.28537889435979447
+   ],
+   "p": 2.2177643300922434e-07,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers four]",
+   "metric": "log_score",
+   "p_holm": 1.0867045217451993e-05,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 520.0,
+   "mean_B": 431.85,
+   "mean_diff": 88.14999999999998,
+   "ci95": [
+    85.32777777777784,
+    91.0166666666666
+   ],
+   "p": 8.006545033944714e-09,
+   "test": "Mann-Whitney U (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers four]",
+   "metric": "t_reach",
+   "p_holm": 4.964057921045722e-07,
+   "survives_holm": true
+  },
+  {
+   "mean_A": 0.009770497290337578,
+   "mean_B": 0.05978064761418289,
+   "mean_diff": -0.050010150323845315,
+   "ci95": [
+    -0.058162329529874456,
+    -0.03862775617251861
+   ],
+   "p": 0.0005,
+   "test": "bootstrap (2000) sign test on SD difference (unpaired)",
+   "part": 1,
+   "contrast": "N=100 - N=8 [mix, observers four]",
+   "metric": "across-seed SD of end P(M>0) (lottery)",
+   "p_holm": 0.0205,
+   "survives_holm": true
+  },
+  {
+   "mean_diff": -0.025022216861963847,
+   "ci95": [
+    -0.0915553494312284,
+    0.039520651989727984
+   ],
+   "dz": -0.16208512211935946,
+   "n_seeds": 20,
+   "mean_A": 0.5583380566549857,
+   "mean_B": 0.5833602735169494,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.5216732025146484,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [pluralist]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": -0.09440798588298491,
+   "ci95": [
+    -0.2389791886376093,
+    0.03950827974610935
+   ],
+   "dz": -0.28528980498503104,
+   "n_seeds": 20,
+   "mean_A": -0.6438134436658555,
+   "mean_B": -0.5494054577828706,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.4523754119873047,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [pluralist]",
+   "metric": "log_score",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.04606481481481482,
+   "ci95": [
+    -0.03796296296296296,
+    0.14606481481481484
+   ],
+   "dz": 0.21453221409973453,
+   "n_seeds": 20,
+   "mean_A": 0.1564814814814815,
+   "mean_B": 0.11041666666666666,
+   "cells": 9,
+   "cells_sig_holm_within": 1,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 1,
+   "p": 0.9810927476285735,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [pluralist]",
+   "metric": "frac_agents_reach",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.059621344898565,
+   "ci95": [
+    0.051671083528639826,
+    0.06944505172175415
+   ],
+   "dz": 2.811775381197466,
+   "n_seeds": 20,
+   "mean_A": 0.5833602735169494,
+   "mean_B": 0.5237389286183843,
+   "cells": 9,
+   "cells_sig_holm_within": 9,
+   "cells_positive_sig": 4,
+   "cells_negative_sig": 5,
+   "p": 1.9073486328125e-06,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "exact observable moments - full natural parameters [pluralist]",
+   "metric": "end_pM",
+   "p_holm": 8.58306884765625e-05,
+   "survives_holm": true
+  },
+  {
+   "mean_diff": 0.001982188889936902,
+   "ci95": [
+    -0.00018672018348067534,
+    0.0045490586918528805
+   ],
+   "dz": 0.3591381330409871,
+   "n_seeds": 20,
+   "mean_A": 0.5603202455449225,
+   "mean_B": 0.5583380566549857,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.26109886169433594,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "sampled support m=1 - exact support (message m=1) [pluralist]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.005128642044779936,
+   "ci95": [
+    0.00016478413513265188,
+    0.010973078509915682
+   ],
+   "dz": 0.4068071736910322,
+   "n_seeds": 20,
+   "mean_A": -0.6386848016210755,
+   "mean_B": -0.6438134436658555,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.26109886169433594,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "sampled support m=1 - exact support (message m=1) [pluralist]",
+   "metric": "log_score",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.008413558024854809,
+   "ci95": [
+    -0.03755049847121299,
+    0.059340999834673544
+   ],
+   "dz": 0.07447914814527122,
+   "n_seeds": 20,
+   "mean_A": 0.1921343052381706,
+   "mean_B": 0.18372074721331583,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.956329345703125,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [committed]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": -0.17261654699310394,
+   "ci95": [
+    -0.4885810756417741,
+    0.13067547440892927
+   ],
+   "dz": -0.2351228597083861,
+   "n_seeds": 20,
+   "mean_A": -2.011343426034739,
+   "mean_B": -1.8387268790416353,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.5216732025146484,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [committed]",
+   "metric": "log_score",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.015509259259259259,
+   "ci95": [
+    0.0006944444444444444,
+    0.03287037037037037
+   ],
+   "dz": 0.41161042951257293,
+   "n_seeds": 20,
+   "mean_A": 0.02152777777777778,
+   "mean_B": 0.0060185185185185185,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.1255400146454536,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [committed]",
+   "metric": "frac_agents_reach",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 4.3884649001155495e-16,
+   "ci95": [
+    3.9505243212525605e-16,
+    4.748535669612469e-16
+   ],
+   "dz": 4.735005937921669,
+   "n_seeds": 20,
+   "mean_A": 0.18372074721331583,
+   "mean_B": 0.18372074721331538,
+   "cells": 9,
+   "cells_sig_holm_within": 1,
+   "cells_positive_sig": 1,
+   "cells_negative_sig": 0,
+   "p": 1.0,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "exact observable moments - full natural parameters [committed]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": -0.03134764791567522,
+   "ci95": [
+    -0.10042414022625229,
+    0.03597651665613264
+   ],
+   "dz": -0.19637996272762218,
+   "n_seeds": 20,
+   "mean_A": 0.5738019210749824,
+   "mean_B": 0.6051495689906575,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.4523754119873047,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [neutral]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": -0.10789017863872823,
+   "ci95": [
+    -0.25662333993010367,
+    0.02936251927434497
+   ],
+   "dz": -0.32157400867804714,
+   "n_seeds": 20,
+   "mean_A": -0.6225068865206461,
+   "mean_B": -0.5146167078819178,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.24548721313476562,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [neutral]",
+   "metric": "log_score",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.13009259259259257,
+   "ci95": [
+    0.00531828703703704,
+    0.2828761574074074
+   ],
+   "dz": 0.4044641026644493,
+   "n_seeds": 20,
+   "mean_A": 0.2497685185185185,
+   "mean_B": 0.11967592592592594,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.422772867833933,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [neutral]",
+   "metric": "frac_agents_reach",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": -4.934324553889584e-18,
+   "ci95": [
+    -1.912050764632214e-17,
+    9.868649107779168e-18
+   ],
+   "dz": -0.1448947036234297,
+   "n_seeds": 20,
+   "mean_A": 0.6051495689906575,
+   "mean_B": 0.6051495689906575,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 1.0,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "exact observable moments - full natural parameters [neutral]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": -0.007725113971769333,
+   "ci95": [
+    -0.07220882740466152,
+    0.05636887664276058
+   ],
+   "dz": -0.05091588469782208,
+   "n_seeds": 20,
+   "mean_A": 0.3743685177582926,
+   "mean_B": 0.382093631730062,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.7561664581298828,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [mix]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": -0.12016122240998142,
+   "ci95": [
+    -0.3479615308707936,
+    0.08952129781546009
+   ],
+   "dz": -0.23775530507669465,
+   "n_seeds": 20,
+   "mean_A": -1.1352215297277097,
+   "mean_B": -1.0150603073177284,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.6215133666992188,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [mix]",
+   "metric": "log_score",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.021296296296296296,
+   "ci95": [
+    0.0011574074074074073,
+    0.045138888888888895
+   ],
+   "dz": 0.40585278907246936,
+   "n_seeds": 20,
+   "mean_A": 0.041435185185185186,
+   "mean_B": 0.02013888888888889,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.6788622187926112,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "m=1 - exact moments [mix]",
+   "metric": "frac_agents_reach",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.0029327066971364833,
+   "ci95": [
+    -0.00386681746191506,
+    0.009768972337323755
+   ],
+   "dz": 0.18319915286213417,
+   "n_seeds": 20,
+   "mean_A": 0.382093631730062,
+   "mean_B": 0.3791609250329254,
+   "cells": 9,
+   "cells_sig_holm_within": 8,
+   "cells_positive_sig": 4,
+   "cells_negative_sig": 4,
+   "p": 0.49800872802734375,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "exact observable moments - full natural parameters [mix]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.0014948954967427808,
+   "ci95": [
+    0.00014795135528914894,
+    0.002951370697664948
+   ],
+   "dz": 0.45495788937779985,
+   "n_seeds": 20,
+   "mean_A": 0.37586341325503536,
+   "mean_B": 0.3743685177582926,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.069580078125,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "sampled support m=1 - exact support (message m=1) [mix]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.006474801462527777,
+   "ci95": [
+    0.0013909750923588335,
+    0.012276752038589571
+   ],
+   "dz": 0.5088742614422823,
+   "n_seeds": 20,
+   "mean_A": -1.1287467282651822,
+   "mean_B": -1.1352215297277097,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.06372261047363281,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "sampled support m=1 - exact support (message m=1) [mix]",
+   "metric": "log_score",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": -0.03343577488681865,
+   "ci95": [
+    -0.06368868929179326,
+    -0.005544441090129884
+   ],
+   "dz": -0.48980724121900704,
+   "n_seeds": 20,
+   "mean_A": -0.02502221686196384,
+   "mean_B": 0.008413558024854809,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.069580078125,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "bandwidth loss: pluralist - committed [(m=1) - (exact)]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.00632543105371137,
+   "ci95": [
+    -0.0013288330662016442,
+    0.013888946282407146
+   ],
+   "dz": 0.35272520482558833,
+   "n_seeds": 20,
+   "mean_A": -0.02502221686196384,
+   "mean_B": -0.031347647915675216,
+   "cells": 9,
+   "cells_sig_holm_within": 1,
+   "cells_positive_sig": 1,
+   "cells_negative_sig": 0,
+   "p": 0.15364646911621094,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "bandwidth loss: pluralist - neutral [(m=1) - (exact)]",
+   "metric": "end_pM",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.07820856111011897,
+   "ci95": [
+    -0.10830517747051643,
+    0.25944141973714374
+   ],
+   "dz": 0.18379570945958992,
+   "n_seeds": 20,
+   "mean_A": -0.09440798588298492,
+   "mean_B": -0.17261654699310391,
+   "cells": 9,
+   "cells_sig_holm_within": 0,
+   "cells_positive_sig": 0,
+   "cells_negative_sig": 0,
+   "p": 0.49800872802734375,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "bandwidth loss: pluralist - committed [(m=1) - (exact)]",
+   "metric": "log_score",
+   "p_holm": 1.0,
+   "survives_holm": false
+  },
+  {
+   "mean_diff": 0.0134821927557433,
+   "ci95": [
+    -0.002613486605441433,
+    0.02923131811478767
+   ],
+   "dz": 0.35743880157498803,
+   "n_seeds": 20,
+   "mean_A": -0.09440798588298492,
+   "mean_B": -0.10789017863872823,
+   "cells": 9,
+   "cells_sig_holm_within": 1,
+   "cells_positive_sig": 1,
+   "cells_negative_sig": 0,
+   "p": 0.058258056640625,
+   "test": "Wilcoxon signed-rank (paired)",
+   "part": 2,
+   "contrast": "bandwidth loss: pluralist - neutral [(m=1) - (exact)]",
+   "metric": "log_score",
+   "p_holm": 1.0,
+   "survives_holm": false
+  }
+ ],
+ "lottery": {
+  "N100|four|committed": {
+   "end_pM": 0.14118164091121224,
+   "across_seed_sd": 0.004549933457311658,
+   "frac_seeds_locked": 1.0,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.0003333333333333333,
+   "t_reach": 520.0
+  },
+  "N100|four|mix": {
+   "end_pM": 0.3225200178049841,
+   "across_seed_sd": 0.009770497290337578,
+   "frac_seeds_locked": 0.8,
+   "bimodality_p(1-p)": 0.01777777777777778,
+   "frac_agents_reach": 0.004,
+   "t_reach": 520.0
+  },
+  "N100|four|neutral": {
+   "end_pM": 0.5620502734555974,
+   "across_seed_sd": 0.003678787084922443,
+   "frac_seeds_locked": 0.0,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.005888888888888889,
+   "t_reach": 520.0
+  },
+  "N100|four|pluralist": {
+   "end_pM": 0.3718787567540656,
+   "across_seed_sd": 0.00767046404140834,
+   "frac_seeds_locked": 0.6666666666666666,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.3253333333333333,
+   "t_reach": 480.98333333333335
+  },
+  "N100|sixth|committed": {
+   "end_pM": 0.1868412168848287,
+   "across_seed_sd": 0.006757837705778456,
+   "frac_seeds_locked": 0.8888888888888888,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.006888888888888889,
+   "t_reach": 520.0
+  },
+  "N100|sixth|mix": {
+   "end_pM": 0.38446715754075644,
+   "across_seed_sd": 0.010883481528094933,
+   "frac_seeds_locked": 0.7777777777777778,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.11611111111111111,
+   "t_reach": 480.9611111111111
+  },
+  "N100|sixth|neutral": {
+   "end_pM": 0.6061557865396221,
+   "across_seed_sd": 0.0037596587479079135,
+   "frac_seeds_locked": 0.0,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.11916666666666666,
+   "t_reach": 465.44444444444446
+  },
+  "N100|sixth|pluralist": {
+   "end_pM": 0.532436249051163,
+   "across_seed_sd": 0.011321861554426755,
+   "frac_seeds_locked": 0.4444444444444444,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.5091111111111111,
+   "t_reach": 431.4888888888889
+  },
+  "N24|sixth|committed": {
+   "end_pM": 0.18372074721331538,
+   "across_seed_sd": 0.01585933773844914,
+   "frac_seeds_locked": 0.9111111111111111,
+   "bimodality_p(1-p)": 0.01777777777777778,
+   "frac_agents_reach": 0.0060185185185185185,
+   "t_reach": 520.0
+  },
+  "N24|sixth|mix": {
+   "end_pM": 0.3791609250329254,
+   "across_seed_sd": 0.021925456320154028,
+   "frac_seeds_locked": 0.7777777777777778,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.10046296296296298,
+   "t_reach": 479.64444444444445
+  },
+  "N24|sixth|neutral": {
+   "end_pM": 0.6051495689906575,
+   "across_seed_sd": 0.0080885387294141,
+   "frac_seeds_locked": 0.0,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.11967592592592594,
+   "t_reach": 465.5833333333333
+  },
+  "N24|sixth|pluralist": {
+   "end_pM": 0.5237389286183843,
+   "across_seed_sd": 0.028238373026750998,
+   "frac_seeds_locked": 0.45555555555555555,
+   "bimodality_p(1-p)": 0.010000000000000002,
+   "frac_agents_reach": 0.46203703703703697,
+   "t_reach": 434.84444444444443
+  },
+  "N50|four|committed": {
+   "end_pM": 0.15567912731395053,
+   "across_seed_sd": 0.00782940366710566,
+   "frac_seeds_locked": 1.0,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.0013333333333333335,
+   "t_reach": 520.0
+  },
+  "N50|four|mix": {
+   "end_pM": 0.34993216631158797,
+   "across_seed_sd": 0.011049311827917692,
+   "frac_seeds_locked": 0.7777777777777778,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.00988888888888889,
+   "t_reach": 520.0
+  },
+  "N50|four|neutral": {
+   "end_pM": 0.5776083402325178,
+   "across_seed_sd": 0.005735131826047571,
+   "frac_seeds_locked": 0.0,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.05011111111111112,
+   "t_reach": 468.6666666666667
+  },
+  "N50|four|pluralist": {
+   "end_pM": 0.46081275951114026,
+   "across_seed_sd": 0.03235675438913181,
+   "frac_seeds_locked": 0.5111111111111111,
+   "bimodality_p(1-p)": 0.026666666666666665,
+   "frac_agents_reach": 0.32311111111111107,
+   "t_reach": 473.1166666666667
+  },
+  "N50|sixth|committed": {
+   "end_pM": 0.18392908984205664,
+   "across_seed_sd": 0.009893226619926624,
+   "frac_seeds_locked": 0.9222222222222223,
+   "bimodality_p(1-p)": 0.02333333333333333,
+   "frac_agents_reach": 0.006111111111111111,
+   "t_reach": 520.0
+  },
+  "N50|sixth|mix": {
+   "end_pM": 0.3792877292135423,
+   "across_seed_sd": 0.009563828470485793,
+   "frac_seeds_locked": 0.7777777777777778,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.10388888888888889,
+   "t_reach": 484.21666666666664
+  },
+  "N50|sixth|neutral": {
+   "end_pM": 0.604450091305898,
+   "across_seed_sd": 0.005872979131765868,
+   "frac_seeds_locked": 0.0,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.11866666666666667,
+   "t_reach": 465.6111111111111
+  },
+  "N50|sixth|pluralist": {
+   "end_pM": 0.5266796088465303,
+   "across_seed_sd": 0.02442838861505595,
+   "frac_seeds_locked": 0.45555555555555555,
+   "bimodality_p(1-p)": 0.010000000000000002,
+   "frac_agents_reach": 0.48777777777777787,
+   "t_reach": 434.68333333333334
+  },
+  "N8|four|committed": {
+   "end_pM": 0.2716164469209108,
+   "across_seed_sd": 0.018373155489422616,
+   "frac_seeds_locked": 0.7777777777777778,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.11736111111111111,
+   "t_reach": 464.6277777777778
+  },
+  "N8|four|mix": {
+   "end_pM": 0.4751384972408971,
+   "across_seed_sd": 0.05978064761418289,
+   "frac_seeds_locked": 0.7222222222222222,
+   "bimodality_p(1-p)": 0.03277777777777778,
+   "frac_agents_reach": 0.16319444444444445,
+   "t_reach": 431.85
+  },
+  "N8|four|neutral": {
+   "end_pM": 0.6396908944714985,
+   "across_seed_sd": 0.009391778687231733,
+   "frac_seeds_locked": 0.0,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.18819444444444444,
+   "t_reach": 406.90555555555557
+  },
+  "N8|four|pluralist": {
+   "end_pM": 0.5436889280962536,
+   "across_seed_sd": 0.017933593726021865,
+   "frac_seeds_locked": 0.4444444444444444,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.45902777777777776,
+   "t_reach": 372.5722222222222
+  },
+  "N8|sixth|committed": {
+   "end_pM": 0.16922026378693852,
+   "across_seed_sd": 0.018262944100240305,
+   "frac_seeds_locked": 0.9833333333333333,
+   "bimodality_p(1-p)": 0.014166666666666668,
+   "frac_agents_reach": 0.003472222222222222,
+   "t_reach": 520.0
+  },
+  "N8|sixth|mix": {
+   "end_pM": 0.41825771909953635,
+   "across_seed_sd": 0.04844887219306127,
+   "frac_seeds_locked": 0.7055555555555556,
+   "bimodality_p(1-p)": 0.03805555555555556,
+   "frac_agents_reach": 0.12152777777777778,
+   "t_reach": 474.3777777777778
+  },
+  "N8|sixth|neutral": {
+   "end_pM": 0.5915794883520753,
+   "across_seed_sd": 0.00978795171733099,
+   "frac_seeds_locked": 0.0,
+   "bimodality_p(1-p)": 0.0,
+   "frac_agents_reach": 0.10972222222222222,
+   "t_reach": 466.3
+  },
+  "N8|sixth|pluralist": {
+   "end_pM": 0.4846127274571583,
+   "across_seed_sd": 0.05699057950943552,
+   "frac_seeds_locked": 0.5111111111111111,
+   "bimodality_p(1-p)": 0.026666666666666665,
+   "frac_agents_reach": 0.425,
+   "t_reach": 448.3722222222222
+  }
+ },
+ "bandwidth_means": {
+  "pluralist|rule|msg0|sup0": {
+   "end_pM": 0.5237389286183843,
+   "log_score": -1.0517825833240368,
+   "frac_agents_reach": 0.46203703703703697
+  },
+  "pluralist|observables|msg0|sup0": {
+   "end_pM": 0.5833602735169494,
+   "log_score": -0.5494054577828706,
+   "frac_agents_reach": 0.11041666666666666
+  },
+  "pluralist|observables|msg10|sup0": {
+   "end_pM": 0.5740390566811371,
+   "log_score": -0.5697065200323951,
+   "frac_agents_reach": 0.08865740740740741
+  },
+  "pluralist|observables|msg3|sup0": {
+   "end_pM": 0.566579972467932,
+   "log_score": -0.5905765529579542,
+   "frac_agents_reach": 0.0974537037037037
+  },
+  "pluralist|observables|msg1|sup0": {
+   "end_pM": 0.5583380566549857,
+   "log_score": -0.6438134436658555,
+   "frac_agents_reach": 0.1564814814814815
+  },
+  "pluralist|observables|msg10|sup10": {
+   "end_pM": 0.5734731617748052,
+   "log_score": -0.5712849174098735,
+   "frac_agents_reach": 0.0875
+  },
+  "pluralist|observables|msg3|sup3": {
+   "end_pM": 0.5705838641843892,
+   "log_score": -0.5826657847514071,
+   "frac_agents_reach": 0.10995370370370369
+  },
+  "pluralist|observables|msg1|sup1": {
+   "end_pM": 0.5603202455449225,
+   "log_score": -0.6386848016210755,
+   "frac_agents_reach": 0.1592592592592593
+  },
+  "committed|rule|msg0|sup0": {
+   "end_pM": 0.18372074721331538,
+   "log_score": -1.8387268790416385,
+   "frac_agents_reach": 0.0060185185185185185
+  },
+  "committed|observables|msg0|sup0": {
+   "end_pM": 0.18372074721331583,
+   "log_score": -1.8387268790416353,
+   "frac_agents_reach": 0.0060185185185185185
+  },
+  "committed|observables|msg10|sup0": {
+   "end_pM": 0.17738461724084983,
+   "log_score": -1.9053609074967166,
+   "frac_agents_reach": 0.00625
+  },
+  "committed|observables|msg3|sup0": {
+   "end_pM": 0.17871937882283154,
+   "log_score": -1.9356684985588442,
+   "frac_agents_reach": 0.012037037037037039
+  },
+  "committed|observables|msg1|sup0": {
+   "end_pM": 0.1921343052381706,
+   "log_score": -2.011343426034739,
+   "frac_agents_reach": 0.02152777777777778
+  },
+  "neutral|rule|msg0|sup0": {
+   "end_pM": 0.6051495689906575,
+   "log_score": -0.5146167078819178,
+   "frac_agents_reach": 0.11967592592592594
+  },
+  "neutral|observables|msg0|sup0": {
+   "end_pM": 0.6051495689906575,
+   "log_score": -0.5146167078819178,
+   "frac_agents_reach": 0.11967592592592594
+  },
+  "neutral|observables|msg10|sup0": {
+   "end_pM": 0.5884605796274494,
+   "log_score": -0.5478649966838754,
+   "frac_agents_reach": 0.12430555555555556
+  },
+  "neutral|observables|msg3|sup0": {
+   "end_pM": 0.5809033687091745,
+   "log_score": -0.5706106728923628,
+   "frac_agents_reach": 0.1550925925925926
+  },
+  "neutral|observables|msg1|sup0": {
+   "end_pM": 0.5738019210749824,
+   "log_score": -0.6225068865206461,
+   "frac_agents_reach": 0.2497685185185185
+  },
+  "mix|rule|msg0|sup0": {
+   "end_pM": 0.3791609250329254,
+   "log_score": -1.0915955025718203,
+   "frac_agents_reach": 0.10046296296296298
+  },
+  "mix|observables|msg0|sup0": {
+   "end_pM": 0.382093631730062,
+   "log_score": -1.0150603073177284,
+   "frac_agents_reach": 0.02013888888888889
+  },
+  "mix|observables|msg10|sup0": {
+   "end_pM": 0.3884135831179803,
+   "log_score": -1.0124934037790032,
+   "frac_agents_reach": 0.027314814814814816
+  },
+  "mix|observables|msg3|sup0": {
+   "end_pM": 0.37762374939524995,
+   "log_score": -1.0555698582981707,
+   "frac_agents_reach": 0.02638888888888889
+  },
+  "mix|observables|msg1|sup0": {
+   "end_pM": 0.3743685177582926,
+   "log_score": -1.1352215297277097,
+   "frac_agents_reach": 0.041435185185185186
+  },
+  "mix|observables|msg10|sup10": {
+   "end_pM": 0.388187461930716,
+   "log_score": -1.0124472967551832,
+   "frac_agents_reach": 0.027546296296296294
+  },
+  "mix|observables|msg3|sup3": {
+   "end_pM": 0.3839097290304935,
+   "log_score": -1.038016009436135,
+   "frac_agents_reach": 0.02685185185185185
+  },
+  "mix|observables|msg1|sup1": {
+   "end_pM": 0.37586341325503536,
+   "log_score": -1.1287467282651822,
+   "frac_agents_reach": 0.041666666666666664
+  }
+ },
+ "drift": {
+  "N24|neutral|m0": {
+   "end_abs_dev": 1.1102230246251565e-16,
+   "frac_seeds_pM_gt_half": 1.0,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.0
+  },
+  "N24|neutral|m1": {
+   "end_abs_dev": 0.12393259497579998,
+   "frac_seeds_pM_gt_half": 0.525,
+   "median_t_consensus": 18.5,
+   "frac_seeds_reaching_dev_0.25": 1.0,
+   "within_seed_agent_sd_end": 4.8572257327350596e-18,
+   "across_seed_sd_end_pM": 0.15770243837374462
+  },
+  "N24|neutral|m10": {
+   "end_abs_dev": 0.03605291806180407,
+   "frac_seeds_pM_gt_half": 0.35,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 8.326672684688674e-18,
+   "across_seed_sd_end_pM": 0.04421723062497053
+  },
+  "N24|neutral|m3": {
+   "end_abs_dev": 0.08081989403480153,
+   "frac_seeds_pM_gt_half": 0.425,
+   "median_t_consensus": 250.5,
+   "frac_seeds_reaching_dev_0.25": 0.85,
+   "within_seed_agent_sd_end": 6.938893903907228e-18,
+   "across_seed_sd_end_pM": 0.09742615469504878
+  },
+  "N24|pluralist|m0": {
+   "end_abs_dev": 0.004141509318919767,
+   "frac_seeds_pM_gt_half": 1.0,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.0
+  },
+  "N24|pluralist|m1": {
+   "end_abs_dev": 0.11870408585925088,
+   "frac_seeds_pM_gt_half": 0.55,
+   "median_t_consensus": 29.0,
+   "frac_seeds_reaching_dev_0.25": 1.0,
+   "within_seed_agent_sd_end": 9.020562075079397e-18,
+   "across_seed_sd_end_pM": 0.15067827032864695
+  },
+  "N24|pluralist|m10": {
+   "end_abs_dev": 0.03678810770782701,
+   "frac_seeds_pM_gt_half": 0.375,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 2.7755575615628915e-18,
+   "across_seed_sd_end_pM": 0.046436495845076045
+  },
+  "N24|pluralist|m3": {
+   "end_abs_dev": 0.076477699431997,
+   "frac_seeds_pM_gt_half": 0.325,
+   "median_t_consensus": 376.0,
+   "frac_seeds_reaching_dev_0.25": 0.7,
+   "within_seed_agent_sd_end": 9.714451465470119e-18,
+   "across_seed_sd_end_pM": 0.09167358532523985
+  },
+  "N50|neutral|m0": {
+   "end_abs_dev": 1.1102230246251565e-16,
+   "frac_seeds_pM_gt_half": 1.0,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.0
+  },
+  "N50|neutral|m1": {
+   "end_abs_dev": 0.09431379254442898,
+   "frac_seeds_pM_gt_half": 0.425,
+   "median_t_consensus": 68.0,
+   "frac_seeds_reaching_dev_0.25": 0.975,
+   "within_seed_agent_sd_end": 4.163336342344337e-17,
+   "across_seed_sd_end_pM": 0.11203790095488829
+  },
+  "N50|neutral|m10": {
+   "end_abs_dev": 0.0263236290053115,
+   "frac_seeds_pM_gt_half": 0.45,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 4.85722573273506e-17,
+   "across_seed_sd_end_pM": 0.03125820439609842
+  },
+  "N50|neutral|m3": {
+   "end_abs_dev": 0.05406764508051818,
+   "frac_seeds_pM_gt_half": 0.35,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 3.8857805861880476e-17,
+   "across_seed_sd_end_pM": 0.06640989057545242
+  },
+  "N50|pluralist|m0": {
+   "end_abs_dev": 0.004141509318919989,
+   "frac_seeds_pM_gt_half": 1.0,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.0
+  },
+  "N50|pluralist|m1": {
+   "end_abs_dev": 0.09025708857613587,
+   "frac_seeds_pM_gt_half": 0.4,
+   "median_t_consensus": 129.0,
+   "frac_seeds_reaching_dev_0.25": 0.95,
+   "within_seed_agent_sd_end": 3.7470027081099036e-17,
+   "across_seed_sd_end_pM": 0.10598619380328735
+  },
+  "N50|pluralist|m10": {
+   "end_abs_dev": 0.025904432402180065,
+   "frac_seeds_pM_gt_half": 0.5,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 5.134781488891349e-17,
+   "across_seed_sd_end_pM": 0.03116925190132623
+  },
+  "N50|pluralist|m3": {
+   "end_abs_dev": 0.052794092247632686,
+   "frac_seeds_pM_gt_half": 0.375,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 3.8857805861880476e-17,
+   "across_seed_sd_end_pM": 0.06539434739316087
+  },
+  "N8|neutral|m0": {
+   "end_abs_dev": 1.1102230246251565e-16,
+   "frac_seeds_pM_gt_half": 1.0,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.0
+  },
+  "N8|neutral|m1": {
+   "end_abs_dev": 0.20384032782096728,
+   "frac_seeds_pM_gt_half": 0.6,
+   "median_t_consensus": 6.0,
+   "frac_seeds_reaching_dev_0.25": 1.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.24241900642432565
+  },
+  "N8|neutral|m10": {
+   "end_abs_dev": 0.0770656936785752,
+   "frac_seeds_pM_gt_half": 0.4,
+   "median_t_consensus": 259.0,
+   "frac_seeds_reaching_dev_0.25": 0.725,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.09193348730598926
+  },
+  "N8|neutral|m3": {
+   "end_abs_dev": 0.12393259497579993,
+   "frac_seeds_pM_gt_half": 0.525,
+   "median_t_consensus": 18.5,
+   "frac_seeds_reaching_dev_0.25": 1.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.15770243837374454
+  },
+  "N8|pluralist|m0": {
+   "end_abs_dev": 0.004141509318919545,
+   "frac_seeds_pM_gt_half": 1.0,
+   "median_t_consensus": 600.0,
+   "frac_seeds_reaching_dev_0.25": 0.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.0
+  },
+  "N8|pluralist|m1": {
+   "end_abs_dev": 0.2030236145661462,
+   "frac_seeds_pM_gt_half": 0.6,
+   "median_t_consensus": 6.5,
+   "frac_seeds_reaching_dev_0.25": 1.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.24017020847409004
+  },
+  "N8|pluralist|m10": {
+   "end_abs_dev": 0.07130415279954824,
+   "frac_seeds_pM_gt_half": 0.375,
+   "median_t_consensus": 459.0,
+   "frac_seeds_reaching_dev_0.25": 0.575,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.08602328770309497
+  },
+  "N8|pluralist|m3": {
+   "end_abs_dev": 0.11830285186613214,
+   "frac_seeds_pM_gt_half": 0.55,
+   "median_t_consensus": 29.0,
+   "frac_seeds_reaching_dev_0.25": 1.0,
+   "within_seed_agent_sd_end": 0.0,
+   "across_seed_sd_end_pM": 0.15079658430082435
+  }
+ }
+}

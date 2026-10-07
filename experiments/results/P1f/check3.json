@@ -1,0 +1,211 @@
+{
+ "arms": {
+  "original|pluralist": {
+   "variant": "original",
+   "type": "pluralist",
+   "committed_w": [
+    0.9969441654737686,
+    0.0030558345262316753
+   ],
+   "mean_frac_agents_reach": 0.46203703703703697,
+   "mean_community_reach": 0.4777777777777778,
+   "mean_log_score": -1.0517825833240368,
+   "mean_brier": 0.3656108453098524,
+   "mean_t_reach": 434.84444444444443,
+   "mean_t_reach_censored": 0.5166666666666667,
+   "mean_end_pM": 0.5237389286183843,
+   "mean_end_pM_pluralist": 0.5237389286183843,
+   "mean_abs_err_M": 0.9850049922650939
+  },
+  "original|neutral": {
+   "variant": "original",
+   "type": "neutral",
+   "committed_w": [
+    0.9969441654737686,
+    0.0030558345262316753
+   ],
+   "mean_frac_agents_reach": 0.11967592592592594,
+   "mean_community_reach": 0.1111111111111111,
+   "mean_log_score": -0.5146167078819178,
+   "mean_brier": 0.16638986845056827,
+   "mean_t_reach": 465.5833333333333,
+   "mean_t_reach_censored": 0.8888888888888888,
+   "mean_end_pM": 0.6051495689906575,
+   "mean_end_pM_neutral": 0.6051495689906575,
+   "mean_abs_err_M": 0.7279528276471527
+  },
+  "original|committed": {
+   "variant": "original",
+   "type": "committed",
+   "committed_w": [
+    0.9969441654737686,
+    0.0030558345262316753
+   ],
+   "mean_frac_agents_reach": 0.0060185185185185185,
+   "mean_community_reach": 0.0,
+   "mean_log_score": -1.8387268790416398,
+   "mean_brier": 0.6835046151926539,
+   "mean_t_reach": 520.0,
+   "mean_t_reach_censored": 1.0,
+   "mean_end_pM": 0.18372074721331508,
+   "mean_end_pM_committed": 0.18372074721331508,
+   "mean_abs_err_M": 1.7919771248174583
+  },
+  "rival_M+3|pluralist": {
+   "variant": "rival_M+3",
+   "type": "pluralist",
+   "committed_w": [
+    0.9999999998982609,
+    1.0174058794004858e-10
+   ],
+   "mean_frac_agents_reach": 0.0060185185185185185,
+   "mean_community_reach": 0.0,
+   "mean_log_score": -1.8630594149986983,
+   "mean_brier": 0.6896825578023731,
+   "mean_t_reach": 520.0,
+   "mean_t_reach_censored": 1.0,
+   "mean_end_pM": 0.17968585284373886,
+   "mean_end_pM_pluralist": 0.1796858528437388,
+   "mean_abs_err_M": 1.796077345445687
+  },
+  "rival_M+3|neutral": {
+   "variant": "rival_M+3",
+   "type": "neutral",
+   "committed_w": [
+    0.9999999998982609,
+    1.0174058794004858e-10
+   ],
+   "mean_frac_agents_reach": 0.18217592592592596,
+   "mean_community_reach": 0.20555555555555555,
+   "mean_log_score": -0.3254050627135819,
+   "mean_brier": 0.08030577749896475,
+   "mean_t_reach": 412.06666666666666,
+   "mean_t_reach_censored": 0.7777777777777778,
+   "mean_end_pM": 0.7252159852115472,
+   "mean_end_pM_neutral": 0.7252159852115472,
+   "mean_abs_err_M": 0.03976407575193706
+  },
+  "rival_M+3|committed": {
+   "variant": "rival_M+3",
+   "type": "committed",
+   "committed_w": [
+    0.9999999998982609,
+    1.0174058794004858e-10
+   ],
+   "mean_frac_agents_reach": 0.0060185185185185185,
+   "mean_community_reach": 0.0,
+   "mean_log_score": -1.8630594123652366,
+   "mean_brier": 0.6896825571482448,
+   "mean_t_reach": 520.0,
+   "mean_t_reach_censored": 1.0,
+   "mean_end_pM": 0.17968585266620588,
+   "mean_end_pM_committed": 0.17968585266620588,
+   "mean_abs_err_M": 1.7960773542701076
+  },
+  "rival_M-3|pluralist": {
+   "variant": "rival_M-3",
+   "type": "pluralist",
+   "committed_w": [
+    0.9968557123102966,
+    0.00314428768970336
+   ],
+   "mean_frac_agents_reach": 0.0060185185185185185,
+   "mean_community_reach": 0.0,
+   "mean_log_score": -1.8632636014788735,
+   "mean_brier": 0.6897243635182075,
+   "mean_t_reach": 520.0,
+   "mean_t_reach_censored": 1.0,
+   "mean_end_pM": 0.17966215721467155,
+   "mean_end_pM_pluralist": 0.17966215721467155,
+   "mean_abs_err_M": 1.7964857938738696
+  },
+  "rival_M-3|neutral": {
+   "variant": "rival_M-3",
+   "type": "neutral",
+   "committed_w": [
+    0.9968557123102966,
+    0.00314428768970336
+   ],
+   "mean_frac_agents_reach": 0.01087962962962963,
+   "mean_community_reach": 0.0,
+   "mean_log_score": -2.125337282494505,
+   "mean_brier": 0.7337596733085494,
+   "mean_t_reach": 520.0,
+   "mean_t_reach_censored": 1.0,
+   "mean_end_pM": 0.160460846194446,
+   "mean_end_pM_neutral": 0.160460846194446,
+   "mean_abs_err_M": 2.46163835595294
+  },
+  "rival_M-3|committed": {
+   "variant": "rival_M-3",
+   "type": "committed",
+   "committed_w": [
+    0.9968557123102966,
+    0.00314428768970336
+   ],
+   "mean_frac_agents_reach": 0.0060185185185185185,
+   "mean_community_reach": 0.0,
+   "mean_log_score": -1.851735401018193,
+   "mean_brier": 0.6866817844498658,
+   "mean_t_reach": 520.0,
+   "mean_t_reach_censored": 1.0,
+   "mean_end_pM": 0.18168502948005344,
+   "mean_end_pM_committed": 0.18168502948005344,
+   "mean_abs_err_M": 1.797795721986044
+  },
+  "K3_-1_+1_+3|pluralist": {
+   "variant": "K3_-1_+1_+3",
+   "type": "pluralist",
+   "committed_w": [
+    0.9969441653840939,
+    0.0030558345204690024,
+    9.543815830506105e-11
+   ],
+   "mean_frac_agents_reach": 0.46203703703703697,
+   "mean_community_reach": 0.4777777777777778,
+   "mean_log_score": -1.0517825833188803,
+   "mean_brier": 0.3656108453083102,
+   "mean_t_reach": 434.84444444444443,
+   "mean_t_reach_censored": 0.5166666666666667,
+   "mean_end_pM": 0.5237389286206537,
+   "mean_end_pM_pluralist": 0.5237389286206537,
+   "mean_abs_err_M": 0.9850049922587296
+  },
+  "K3_-1_+1_+3|neutral": {
+   "variant": "K3_-1_+1_+3",
+   "type": "neutral",
+   "committed_w": [
+    0.9969441653840939,
+    0.0030558345204690024,
+    9.543815830506105e-11
+   ],
+   "mean_frac_agents_reach": 0.22060185185185183,
+   "mean_community_reach": 0.2222222222222222,
+   "mean_log_score": -0.29674597104664335,
+   "mean_brier": 0.06864787163401251,
+   "mean_t_reach": 411.5888888888889,
+   "mean_t_reach_censored": 0.7777777777777778,
+   "mean_end_pM": 0.7456478479210796,
+   "mean_end_pM_neutral": 0.7456478479210799,
+   "mean_abs_err_M": 0.03806848074338048
+  },
+  "K3_-1_+1_+3|committed": {
+   "variant": "K3_-1_+1_+3",
+   "type": "committed",
+   "committed_w": [
+    0.9969441653840939,
+    0.0030558345204690024,
+    9.543815830506105e-11
+   ],
+   "mean_frac_agents_reach": 0.0060185185185185185,
+   "mean_community_reach": 0.0,
+   "mean_log_score": -1.8387268762995348,
+   "mean_brier": 0.6835046144706978,
+   "mean_t_reach": 520.0,
+   "mean_t_reach_censored": 1.0,
+   "mean_end_pM": 0.18372074768076654,
+   "mean_end_pM_committed": 0.1837207476807665,
+   "mean_abs_err_M": 1.7919771241980382
+  }
+ }
+}
