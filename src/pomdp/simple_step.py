@@ -212,10 +212,15 @@ def marginalize_context(q_joint: jnp.ndarray, K: int, C: int = 2) -> jnp.ndarray
 
 
 def sample_observations(A_world_orig: jnp.ndarray, cfg: SimpleConfig,
-                        t: int, key: jax.Array, N: int
+                        t: int, key: jax.Array, N: int,
+                        actions: jnp.ndarray | None = None
                         ) -> tuple[jnp.ndarray, float]:
-    """Sample one-hot observations from the true paradigm at the fixed experiment."""
-    action = cfg.obs_x_index
+    """Sample one-hot observations from the true paradigm at each agent's experiment.
+
+    actions : (N,) experiment index per agent. None = everyone at cfg.obs_x_index.
+    """
+    if actions is None:
+        actions = jnp.full((N,), cfg.obs_x_index, dtype=jnp.int32)
 
     if cfg.use_theta_schedule:
         theta_star = float(theta_schedule(jnp.asarray(t), cfg.pomdp.world))
@@ -223,15 +228,16 @@ def sample_observations(A_world_orig: jnp.ndarray, cfg: SimpleConfig,
         lo, hi = theta_vals[0], theta_vals[-1]
         frac = (theta_star - lo) / (hi - lo + EPS)
         frac = float(jnp.clip(frac, 0.0, 1.0))
-        p_o = ((1.0 - frac) * A_world_orig[:, 0, action]
-               + frac * A_world_orig[:, 1, action])
+        p_o = ((1.0 - frac) * A_world_orig[:, 0, :]
+               + frac * A_world_orig[:, 1, :])                 # (n_o, A)
     else:
         theta_star = float(cfg.pomdp.theta_vals[cfg.pomdp.true_paradigm])
-        p_o = A_world_orig[:, cfg.pomdp.true_paradigm, action]
+        p_o = A_world_orig[:, cfg.pomdp.true_paradigm, :]      # (n_o, A)
 
     keys = jax.random.split(key, N)
     log_p = jnp.log(p_o + EPS)
-    o_idx = jax.vmap(lambda k: jax.random.categorical(k, log_p))(keys)
+    o_idx = jax.vmap(lambda k, a: jax.random.categorical(k, log_p[:, a]))(
+        keys, actions)
     o_world = jax.nn.one_hot(o_idx, cfg.pomdp.n_o)
     return o_world, theta_star
 
@@ -266,20 +272,24 @@ def affordable_experiment(r: jnp.ndarray, x_grid: tuple,
 # ------------------------------------------------------------------
 
 def categorical_surprisal(q_theta: jnp.ndarray, A_world: jnp.ndarray,
-                          o_world: jnp.ndarray, action: int,
+                          o_world: jnp.ndarray, action,
                           adj: jnp.ndarray) -> jnp.ndarray:
     """Surprisal matrix eps_ij: how well did j's belief predict i's observation?
 
-    eps_ij = -log sum_theta q_j(theta) * A_world[o_i, theta, action]
+    eps_ij = -log sum_theta q_j(theta) * A_world[o_i, theta, a_i]
 
+    j's prediction is scored at the experiment i actually ran (a_i).
     q_theta : (N, K), A_world : (n_o, K, A), o_world : (N, n_o) one-hot,
+    action : int (everyone at one experiment) or (N,) per-agent experiments,
     adj : (N, N) adjacency + self-loops.
     Returns (N, N) masked surprisal.
     """
-    A_a = A_world[:, :, action]                               # (n_o, K)
-    pred_j = q_theta @ A_a.T                                  # (N, n_o): j's predictive
-    log_pred_j = jnp.log(pred_j + EPS)                        # (N, n_o)
-    ll_at_i = jnp.sum(o_world[:, None, :] * log_pred_j[None, :, :], axis=2)  # (N, N)
+    N = o_world.shape[0]
+    actions = jnp.broadcast_to(jnp.asarray(action, dtype=jnp.int32), (N,))
+    A_i = jnp.transpose(A_world[:, :, actions], (2, 0, 1))   # (N, n_o, K) at a_i
+    pred = jnp.einsum('jk,iok->ijo', q_theta, A_i)           # (N_i, N_j, n_o)
+    log_pred = jnp.log(pred + EPS)
+    ll_at_i = jnp.sum(o_world[:, None, :] * log_pred, axis=2)  # (N, N)
     return -ll_at_i * adj
 
 
@@ -378,7 +388,7 @@ def simple_step(state: SimpleState,
 
     # 3. OBSERVE
     o_world, theta_star_t = sample_observations(
-        A_world_orig, cfg, t, key_obs, N)
+        A_world_orig, cfg, t, key_obs, N, actions)
 
     # 4. EMIT + ROUTE (emit marginal q(theta) for social channel)
     q_theta = marginalize_theta(q_prior, K, C)                # (N, K)
@@ -403,7 +413,7 @@ def simple_step(state: SimpleState,
     if cfg.trust_learning and state.alpha_t is not None:
         q_theta_post = marginalize_theta(q_joint_post, K, C)
         epsilon = categorical_surprisal(
-            q_theta_post, A_world_orig, o_world, cfg.obs_x_index, adj)
+            q_theta_post, A_world_orig, o_world, actions, adj)
         alpha_new, beta_new, T_new = trust_update(
             state.alpha_t, state.beta_t, epsilon, adj, cfg.trust_rho)
 

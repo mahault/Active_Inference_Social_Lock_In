@@ -533,7 +533,7 @@ def structural_step(state: StructuralState,
 
     # 3. OBSERVE
     o_world, theta_star_t = sample_observations(
-        A_world_orig, cfg.motivated.simple, t, key_obs, N)
+        A_world_orig, cfg.motivated.simple, t, key_obs, N, actions)
 
     # 4. EMIT + ROUTE
     q_theta = marginalize_theta(q_prior, K, C)
@@ -589,7 +589,7 @@ def structural_step(state: StructuralState,
         q_theta_post = marginalize_theta(q_joint_post, K, C)
         epsilon = categorical_surprisal(
             q_theta_post, A_world_orig, o_world,
-            cfg.motivated.simple.obs_x_index, adj)
+            actions, adj)
         alpha_new, beta_new, T_new = trust_update(
             state.motivated.simple.alpha_t, state.motivated.simple.beta_t,
             epsilon, adj, cfg.motivated.simple.trust_rho)

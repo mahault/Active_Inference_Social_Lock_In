@@ -316,7 +316,7 @@ def cont_step(state: ContState,
     # 7. TRUST UPDATE
     alpha_new, beta_new, T_new = state.alpha_t, state.beta_t, T
     if cfg.trust_learning and state.alpha_t is not None:
-        epsilon = categorical_surprisal(q_new, A_world, o_world, cfg.obs_x_index, adj)
+        epsilon = categorical_surprisal(q_new, A_world, o_world, actions, adj)
         alpha_new, beta_new, T_new = trust_update(
             state.alpha_t, state.beta_t, epsilon, adj, cfg.trust_rho)
 
