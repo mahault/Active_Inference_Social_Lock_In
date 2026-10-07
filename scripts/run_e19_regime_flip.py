@@ -56,7 +56,7 @@ def main():
     n_dep = 3
     edge_prec = 0.8
     n_steps = 200
-    seeds = [0, 1, 2, 3, 4]
+    seeds = list(range(int(os.environ.get("N_SEEDS", "5"))))  # 5 = original runs
     wrong_fracs = [0.2, 0.35, 0.5, 0.65, 0.8]
 
     def run_cell(wrong_frac, trust, resource, seed):

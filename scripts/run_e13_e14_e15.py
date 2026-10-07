@@ -76,7 +76,7 @@ def run_e13():
     N = 40
     K = 2
     n_steps = 150
-    seeds = [0, 1, 2, 3, 4]
+    seeds = list(range(int(os.environ.get("N_SEEDS", "5"))))  # 5 = original runs
     true_p = 1
 
     base_pomdp = PomdpConfig(
@@ -187,7 +187,7 @@ def run_e14():
     N = 30
     K = 2
     n_steps = 200
-    seeds = [0, 1, 2, 3, 4]
+    seeds = list(range(int(os.environ.get("N_SEEDS", "5"))))  # 5 = original runs
     true_p = 1
 
     base_pomdp = PomdpConfig(
@@ -227,7 +227,8 @@ def run_e14():
         arr = np.array(means[c])
         print(f"  {str(c[0]):<6} {str(c[1]):<6} {arr.mean():>20.3f} +- {arr.std():.3f}  (n={len(arr)})")
         summary[f"trust={c[0]}_rsrc={c[1]}"] = {
-            "mean": float(arr.mean()), "std": float(arr.std()), "n": len(arr)}
+            "mean": float(arr.mean()), "std": float(arr.std()), "n": len(arr),
+            "per_seed": [float(x) for x in arr]}
 
     # Compute additive prediction vs observed
     base = np.array(means[(False, False)]).mean()
@@ -318,7 +319,7 @@ def run_e15():
     N = 30
     K = 2
     n_steps = 200
-    seeds = [0, 1, 2, 3, 4]
+    seeds = list(range(int(os.environ.get("N_SEEDS", "5"))))  # 5 = original runs
     true_p = 1
     c0_values = [0.0, 0.04, 0.08, 0.12, 0.20, 0.30, 0.50]
 

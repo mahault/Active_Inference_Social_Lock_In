@@ -5,9 +5,9 @@
     "dissident_final": 0.17030847072601318
   },
   "full mechanism (trust + rsrc)": {
-    "pop_final": 0.8056151080131531,
+    "pop_final": 0.8056151199340821,
     "mainstream_final": 0.8056639432907104,
     "dissident_final": 0.8056280016899109
   },
-  "hysteresis_gap": 0.6472873133420944
+  "hysteresis_gap": 0.6472873252630235
 }

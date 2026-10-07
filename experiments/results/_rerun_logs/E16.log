@@ -1,0 +1,15 @@
+
+==============================================================================
+E16 -- Trust-mediated hysteresis under truth reversal
+==============================================================================
+Population: 80% mainstream (paradigm 0), 20% dissident (paradigm 1).
+Truth schedule: paradigm 0 (t < 80), paradigm 1 (80..240), paradigm 0 (t >= 240).
+Compare control (trust+rsrc OFF) vs full mechanism (trust+rsrc ON).
+
+condition                          pop final q(p=1)   mainstream    dissident
+(truth at end = paradigm 0; q(paradigm=1) should be LOW if no lock-in)
+  control (channels off)                      0.158        0.169        0.170
+  full mechanism (trust + rsrc)               0.806        0.806        0.806
+
+HYSTERESIS gap (full - control) at final t (truth = paradigm 0): +0.647
+  Strong hysteresis: trust+resources prevent recovery to truth.

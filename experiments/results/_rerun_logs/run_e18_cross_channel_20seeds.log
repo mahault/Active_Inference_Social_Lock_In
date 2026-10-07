@@ -1,0 +1,52 @@
+
+============================================================================
+E18 -- 2x2x2 cross-channel interaction (gamma x trust x resource)
+============================================================================
+Structural substrate. 30% wrong-bloc (committed + convicted), truth=p1.
+Readout: wrong-bloc final q(truth). Low = locked in.
+  [1/8] gamma=off trust=off rsrc=off -> wrong-bloc q(truth) = 0.914 +- 0.149
+  [2/8] gamma=off trust=off rsrc=on  -> wrong-bloc q(truth) = 0.833 +- 0.196
+  [3/8] gamma=off trust=on  rsrc=off -> wrong-bloc q(truth) = 0.985 +- 0.001
+  [4/8] gamma=off trust=on  rsrc=on  -> wrong-bloc q(truth) = 0.884 +- 0.157
+  [5/8] gamma=on  trust=off rsrc=off -> wrong-bloc q(truth) = 0.877 +- 0.173
+  [6/8] gamma=on  trust=off rsrc=on  -> wrong-bloc q(truth) = 0.833 +- 0.196
+  [7/8] gamma=on  trust=on  rsrc=off -> wrong-bloc q(truth) = 0.984 +- 0.000
+  [8/8] gamma=on  trust=on  rsrc=on  -> wrong-bloc q(truth) = 0.884 +- 0.157
+
+============================================================================
+Cube (wrong-bloc convergence to truth; 1.0=converged, 0=locked)
+============================================================================
+ gamma  trust   rsrc     mean     std
+ False  False  False    0.914   0.149
+ False  False   True    0.833   0.196
+ False   True  False    0.985   0.001
+ False   True   True    0.884   0.157
+  True  False  False    0.877   0.173
+  True  False   True    0.833   0.196
+  True   True  False    0.984   0.000
+  True   True   True    0.884   0.157
+
+============================================================================
+Main effects (lock-in induced by each channel alone)
+============================================================================
+  baseline (all off) wrong-bloc convergence: 0.914
+  gamma alone:     delta = +0.037
+  trust alone:     delta = -0.071
+  resource alone:  delta = +0.081
+
+============================================================================
+Pairwise interactions (third channel OFF)
+============================================================================
+  interaction > 0 => super-additive (more lock-in than sum of parts)
+  gamma x trust:     additive=0.948  observed=0.984  interaction=-0.035
+  gamma x resource:  additive=0.796  observed=0.833  interaction=-0.037
+  trust x resource:  additive=0.904  observed=0.884  interaction=+0.020
+
+============================================================================
+Three-way (all channels on)
+============================================================================
+  additive prediction = 0.868
+  observed all-on     = 0.884
+  three-way deviation = -0.017
+
+Saved figure to experiments/results/E18/cross_channel_interactions.png

@@ -1,0 +1,111 @@
+========================================================================
+E17 -- phase diagram: (R_in, c0) sweep
+========================================================================
+Total runs: 75 (5 R_in x 5 c0 x 3 seeds)
+  [  1/75] R_in=0.00 c0=0.005 seed=0  peak=0.896  end=0.194  (12.3s/run, ETA 908s)
+  [  2/75] R_in=0.00 c0=0.005 seed=1  peak=0.896  end=0.194  (11.9s/run, ETA 866s)
+  [  3/75] R_in=0.00 c0=0.005 seed=2  peak=0.896  end=0.194  (13.3s/run, ETA 956s)
+  [  4/75] R_in=0.00 c0=0.015 seed=0  peak=0.897  end=0.806  (13.4s/run, ETA 952s)
+  [  5/75] R_in=0.00 c0=0.015 seed=1  peak=0.896  end=0.806  (13.8s/run, ETA 965s)
+  [  6/75] R_in=0.00 c0=0.015 seed=2  peak=0.896  end=0.806  (13.7s/run, ETA 947s)
+  [  7/75] R_in=0.00 c0=0.030 seed=0  peak=0.886  end=0.806  (13.4s/run, ETA 908s)
+  [  8/75] R_in=0.00 c0=0.030 seed=1  peak=0.874  end=0.806  (13.4s/run, ETA 895s)
+  [  9/75] R_in=0.00 c0=0.030 seed=2  peak=0.860  end=0.806  (12.9s/run, ETA 853s)
+  [ 10/75] R_in=0.00 c0=0.060 seed=0  peak=0.200  end=0.194  (12.6s/run, ETA 820s)
+  [ 11/75] R_in=0.00 c0=0.060 seed=1  peak=0.195  end=0.194  (12.4s/run, ETA 794s)
+  [ 12/75] R_in=0.00 c0=0.060 seed=2  peak=0.195  end=0.194  (12.2s/run, ETA 767s)
+  [ 13/75] R_in=0.00 c0=0.120 seed=0  peak=0.199  end=0.194  (12.2s/run, ETA 754s)
+  [ 14/75] R_in=0.00 c0=0.120 seed=1  peak=0.199  end=0.194  (12.1s/run, ETA 735s)
+  [ 15/75] R_in=0.00 c0=0.120 seed=2  peak=0.195  end=0.194  (11.9s/run, ETA 717s)
+  [ 16/75] R_in=0.01 c0=0.005 seed=0  peak=0.896  end=0.194  (11.9s/run, ETA 700s)
+  [ 17/75] R_in=0.01 c0=0.005 seed=1  peak=0.896  end=0.194  (11.7s/run, ETA 680s)
+  [ 18/75] R_in=0.01 c0=0.005 seed=2  peak=0.896  end=0.194  (11.5s/run, ETA 658s)
+  [ 19/75] R_in=0.01 c0=0.015 seed=0  peak=0.897  end=0.806  (11.4s/run, ETA 637s)
+  [ 20/75] R_in=0.01 c0=0.015 seed=1  peak=0.896  end=0.806  (11.2s/run, ETA 617s)
+  [ 21/75] R_in=0.01 c0=0.015 seed=2  peak=0.896  end=0.806  (11.1s/run, ETA 599s)
+  [ 22/75] R_in=0.01 c0=0.030 seed=0  peak=0.888  end=0.806  (11.0s/run, ETA 581s)
+  [ 23/75] R_in=0.01 c0=0.030 seed=1  peak=0.880  end=0.806  (10.8s/run, ETA 564s)
+  [ 24/75] R_in=0.01 c0=0.030 seed=2  peak=0.860  end=0.806  (10.8s/run, ETA 551s)
+  [ 25/75] R_in=0.01 c0=0.060 seed=0  peak=0.204  end=0.194  (10.7s/run, ETA 536s)
+  [ 26/75] R_in=0.01 c0=0.060 seed=1  peak=0.195  end=0.194  (10.6s/run, ETA 522s)
+  [ 27/75] R_in=0.01 c0=0.060 seed=2  peak=0.195  end=0.194  (10.6s/run, ETA 509s)
+  [ 28/75] R_in=0.01 c0=0.120 seed=0  peak=0.199  end=0.194  (10.6s/run, ETA 497s)
+  [ 29/75] R_in=0.01 c0=0.120 seed=1  peak=0.201  end=0.194  (10.6s/run, ETA 487s)
+  [ 30/75] R_in=0.01 c0=0.120 seed=2  peak=0.195  end=0.194  (10.6s/run, ETA 475s)
+  [ 31/75] R_in=0.03 c0=0.005 seed=0  peak=0.896  end=0.194  (10.5s/run, ETA 463s)
+  [ 32/75] R_in=0.03 c0=0.005 seed=1  peak=0.896  end=0.194  (10.5s/run, ETA 453s)
+  [ 33/75] R_in=0.03 c0=0.005 seed=2  peak=0.896  end=0.194  (10.5s/run, ETA 440s)
+  [ 34/75] R_in=0.03 c0=0.015 seed=0  peak=0.899  end=0.806  (10.5s/run, ETA 430s)
+  [ 35/75] R_in=0.03 c0=0.015 seed=1  peak=0.896  end=0.806  (10.5s/run, ETA 419s)
+  [ 36/75] R_in=0.03 c0=0.015 seed=2  peak=0.896  end=0.806  (10.4s/run, ETA 407s)
+  [ 37/75] R_in=0.03 c0=0.030 seed=0  peak=0.890  end=0.806  (10.4s/run, ETA 396s)
+  [ 38/75] R_in=0.03 c0=0.030 seed=1  peak=0.880  end=0.806  (10.4s/run, ETA 386s)
+  [ 39/75] R_in=0.03 c0=0.030 seed=2  peak=0.867  end=0.806  (10.4s/run, ETA 375s)
+  [ 40/75] R_in=0.03 c0=0.060 seed=0  peak=0.197  end=0.194  (10.4s/run, ETA 364s)
+  [ 41/75] R_in=0.03 c0=0.060 seed=1  peak=0.195  end=0.194  (10.4s/run, ETA 352s)
+  [ 42/75] R_in=0.03 c0=0.060 seed=2  peak=0.195  end=0.194  (10.3s/run, ETA 340s)
+  [ 43/75] R_in=0.03 c0=0.120 seed=0  peak=0.198  end=0.194  (10.3s/run, ETA 329s)
+  [ 44/75] R_in=0.03 c0=0.120 seed=1  peak=0.198  end=0.194  (10.2s/run, ETA 317s)
+  [ 45/75] R_in=0.03 c0=0.120 seed=2  peak=0.195  end=0.194  (10.2s/run, ETA 306s)
+  [ 46/75] R_in=0.06 c0=0.005 seed=0  peak=0.896  end=0.135  (10.2s/run, ETA 295s)
+  [ 47/75] R_in=0.06 c0=0.005 seed=1  peak=0.896  end=0.161  (10.1s/run, ETA 283s)
+  [ 48/75] R_in=0.06 c0=0.005 seed=2  peak=0.896  end=0.185  (10.1s/run, ETA 272s)
+  [ 49/75] R_in=0.06 c0=0.015 seed=0  peak=0.896  end=0.806  (10.1s/run, ETA 261s)
+  [ 50/75] R_in=0.06 c0=0.015 seed=1  peak=0.896  end=0.806  (10.0s/run, ETA 251s)
+  [ 51/75] R_in=0.06 c0=0.015 seed=2  peak=0.897  end=0.806  (10.0s/run, ETA 240s)
+  [ 52/75] R_in=0.06 c0=0.030 seed=0  peak=0.893  end=0.806  (10.0s/run, ETA 229s)
+  [ 53/75] R_in=0.06 c0=0.030 seed=1  peak=0.878  end=0.805  (9.9s/run, ETA 218s)
+  [ 54/75] R_in=0.06 c0=0.030 seed=2  peak=0.866  end=0.806  (9.9s/run, ETA 207s)
+  [ 55/75] R_in=0.06 c0=0.060 seed=0  peak=0.204  end=0.194  (9.8s/run, ETA 197s)
+  [ 56/75] R_in=0.06 c0=0.060 seed=1  peak=0.196  end=0.194  (9.8s/run, ETA 187s)
+  [ 57/75] R_in=0.06 c0=0.060 seed=2  peak=0.195  end=0.194  (9.8s/run, ETA 176s)
+  [ 58/75] R_in=0.06 c0=0.120 seed=0  peak=0.196  end=0.194  (9.8s/run, ETA 166s)
+  [ 59/75] R_in=0.06 c0=0.120 seed=1  peak=0.195  end=0.194  (9.8s/run, ETA 156s)
+  [ 60/75] R_in=0.06 c0=0.120 seed=2  peak=0.195  end=0.194  (9.7s/run, ETA 146s)
+  [ 61/75] R_in=0.10 c0=0.005 seed=0  peak=0.896  end=0.135  (9.7s/run, ETA 136s)
+  [ 62/75] R_in=0.10 c0=0.005 seed=1  peak=0.896  end=0.161  (9.7s/run, ETA 126s)
+  [ 63/75] R_in=0.10 c0=0.005 seed=2  peak=0.896  end=0.185  (9.6s/run, ETA 116s)
+  [ 64/75] R_in=0.10 c0=0.015 seed=0  peak=0.897  end=0.806  (9.6s/run, ETA 106s)
+  [ 65/75] R_in=0.10 c0=0.015 seed=1  peak=0.896  end=0.806  (9.6s/run, ETA 96s)
+  [ 66/75] R_in=0.10 c0=0.015 seed=2  peak=0.896  end=0.806  (9.6s/run, ETA 86s)
+  [ 67/75] R_in=0.10 c0=0.030 seed=0  peak=0.896  end=0.806  (9.5s/run, ETA 76s)
+  [ 68/75] R_in=0.10 c0=0.030 seed=1  peak=0.877  end=0.806  (9.5s/run, ETA 67s)
+  [ 69/75] R_in=0.10 c0=0.030 seed=2  peak=0.883  end=0.806  (9.5s/run, ETA 57s)
+  [ 70/75] R_in=0.10 c0=0.060 seed=0  peak=0.210  end=0.194  (9.5s/run, ETA 47s)
+  [ 71/75] R_in=0.10 c0=0.060 seed=1  peak=0.196  end=0.194  (9.4s/run, ETA 38s)
+  [ 72/75] R_in=0.10 c0=0.060 seed=2  peak=0.195  end=0.194  (9.4s/run, ETA 28s)
+  [ 73/75] R_in=0.10 c0=0.120 seed=0  peak=0.197  end=0.194  (9.4s/run, ETA 19s)
+  [ 74/75] R_in=0.10 c0=0.120 seed=1  peak=0.196  end=0.194  (9.4s/run, ETA 9s)
+  [ 75/75] R_in=0.10 c0=0.120 seed=2  peak=0.195  end=0.194  (9.4s/run, ETA 0s)
+
+========================================================================
+Phase-1 peak adaptation (1.0 = full, 0 = no adaptation):
+========================================================================
+   R_in/c0    0.005    0.015    0.030    0.060    0.120
+      0.00    0.896    0.897    0.873    0.197    0.198
+      0.01    0.896    0.897    0.876    0.198    0.198
+      0.03    0.896    0.897    0.879    0.196    0.197
+      0.06    0.896    0.896    0.879    0.198    0.195
+      0.10    0.896    0.897    0.885    0.200    0.196
+
+========================================================================
+Phase-2 end belief (1.0 = locked at paradigm 1, 0 = full revert):
+========================================================================
+   R_in/c0    0.005    0.015    0.030    0.060    0.120
+      0.00    0.194    0.806    0.806    0.194    0.194
+      0.01    0.194    0.806    0.806    0.194    0.194
+      0.03    0.194    0.806    0.806    0.194    0.194
+      0.06    0.160    0.806    0.806    0.194    0.194
+      0.10    0.160    0.806    0.806    0.194    0.194
+
+========================================================================
+Regime classification:
+========================================================================
+   R_in/c0      0.005      0.015      0.030      0.060      0.120
+      0.00 adapt+revert hysteresis hysteresis    blocked    blocked
+      0.01 adapt+revert hysteresis hysteresis    blocked    blocked
+      0.03 adapt+revert hysteresis hysteresis    blocked    blocked
+      0.06 adapt+revert hysteresis hysteresis    blocked    blocked
+      0.10 adapt+revert hysteresis hysteresis    blocked    blocked
+
+Saved figure to experiments/results/E17/phase_diagram.png

@@ -1,0 +1,45 @@
+
+============================================================================
+E19 -- trust x resource interaction vs wrong-bloc fraction
+============================================================================
+gamma OFF throughout (isolates trust x resource). Structural substrate.
+Readout: population mean q(truth=paradigm 1) at end.
+Prediction: interaction crosses 0 (sub -> super additive) as the
+correct majority is lost (wrong_frac passes ~0.5).
+  [20/400] wf=0.20 trust=off rsrc=off -> q(truth)=0.985
+  [40/400] wf=0.20 trust=off rsrc=on  -> q(truth)=0.960
+  [60/400] wf=0.20 trust=on  rsrc=off -> q(truth)=0.985
+  [80/400] wf=0.20 trust=on  rsrc=on  -> q(truth)=0.984
+    -> base=0.985 d_trust=+0.000 d_rsrc=+0.025 additive=0.960 observed=0.984 INTERACTION=-0.024
+  [100/400] wf=0.35 trust=off rsrc=off -> q(truth)=0.886
+  [120/400] wf=0.35 trust=off rsrc=on  -> q(truth)=0.799
+  [140/400] wf=0.35 trust=on  rsrc=off -> q(truth)=0.985
+  [160/400] wf=0.35 trust=on  rsrc=on  -> q(truth)=0.849
+    -> base=0.886 d_trust=-0.099 d_rsrc=+0.087 additive=0.898 observed=0.849 INTERACTION=+0.048
+  [180/400] wf=0.50 trust=off rsrc=off -> q(truth)=0.601
+  [200/400] wf=0.50 trust=off rsrc=on  -> q(truth)=0.503
+  [220/400] wf=0.50 trust=on  rsrc=off -> q(truth)=0.985
+  [240/400] wf=0.50 trust=on  rsrc=on  -> q(truth)=0.592
+    -> base=0.601 d_trust=-0.384 d_rsrc=+0.098 additive=0.887 observed=0.592 INTERACTION=+0.295
+  [260/400] wf=0.65 trust=off rsrc=off -> q(truth)=0.213
+  [280/400] wf=0.65 trust=off rsrc=on  -> q(truth)=0.152
+  [300/400] wf=0.65 trust=on  rsrc=off -> q(truth)=0.852
+  [320/400] wf=0.65 trust=on  rsrc=on  -> q(truth)=0.174
+    -> base=0.213 d_trust=-0.639 d_rsrc=+0.062 additive=0.791 observed=0.174 INTERACTION=+0.616
+  [340/400] wf=0.80 trust=off rsrc=off -> q(truth)=0.052
+  [360/400] wf=0.80 trust=off rsrc=on  -> q(truth)=0.032
+  [380/400] wf=0.80 trust=on  rsrc=off -> q(truth)=0.346
+  [400/400] wf=0.80 trust=on  rsrc=on  -> q(truth)=0.039
+    -> base=0.052 d_trust=-0.294 d_rsrc=+0.020 additive=0.326 observed=0.039 INTERACTION=+0.287
+
+============================================================================
+Summary: interaction vs wrong-bloc fraction
+============================================================================
+wrong_frac    base  both_obs  interaction   sign
+      0.20   0.985     0.984       -0.024    sub
+      0.35   0.886     0.849       +0.048  super
+      0.50   0.601     0.592       +0.295  super
+      0.65   0.213     0.174       +0.616  super
+      0.80   0.052     0.039       +0.287  super
+
+Saved figure to experiments/results/E19/regime_flip.png

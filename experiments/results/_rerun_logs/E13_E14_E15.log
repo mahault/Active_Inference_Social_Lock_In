@@ -1,0 +1,132 @@
+
+==============================================================================
+E13 -- Trust ablation under heterogeneous priors
+==============================================================================
+Setup: 30% of agents start with P(paradigm 0) = 0.95 (WRONG);
+       70% start with P(paradigm 1) = 0.95 (RIGHT). Truth = paradigm 1.
+       Cont substrate, lambda=1.0 (no tempering), q_reliability=0.75.
+       Compare trust_learning=False vs trust_learning=True.
+
+condition              mean_qB_final   wrong_bloc_final   right_bloc_final
+  trust_learning=False            0.995              0.993              0.996
+  trust_learning=True             0.995              0.993              0.996
+
+Trust marginal on WRONG-bloc convergence: +0.000
+  Positive = trust learning prevents wrong-bloc convergence (lock-in).
+
+==============================================================================
+E14 -- Trust x Resource interaction matrix (2x2)
+==============================================================================
+Setup: same heterogeneous 30/70 prior as E13. Sweep trust and resource.
+       n=30, q_reliability=0.70, 5 seeds.
+
+trust  rsrc        wrong-bloc final q(truth)
+  False  False                 0.994 +- 0.000  (n=5)
+  False  True                  0.690 +- 0.177  (n=5)
+  True   False                 0.994 +- 0.000  (n=5)
+  True   True                  0.754 +- 0.126  (n=5)
+
+baseline (both off) wrong-bloc convergence:      0.994
+only trust on:                                   0.994  (delta = --0.000)
+only rsrc on:                                    0.690  (delta = -0.304)
+BOTH on, observed:                               0.754
+BOTH on, additive prediction:                    0.690
+INTERACTION (additive_predicted - observed):     -0.064
+  -> SUB-ADDITIVE: trust + resources interfere (weaker lock-in than sum)
+
+==============================================================================
+E15 -- Resource dose-response (no schedule change)
+==============================================================================
+Setup: same heterogeneous 30/70 prior as E14, truth=paradigm 1 fixed.
+       Sweep c0 in {0.0 (off), 0.04, 0.08, 0.12, 0.20, 0.30, 0.50}.
+       Trust learning ON. Measures wrong-bloc convergence vs cost.
+       Goal: smooth phase-transition curve from 'full adaptation' to
+       'blocked' as resource cost increases.
+
+    c0    wrong-bloc q(truth)    right-bloc q(truth)    final r
+  0.00                 0.994                 0.992       1.000
+  0.04                 0.806                 0.958       0.100
+  0.08                 0.754                 0.947       0.100
+  0.12                 0.754                 0.947       0.100
+  0.20                 0.754                 0.947       0.100
+  0.30                 0.689                 0.924       0.100
+  0.50                 0.691                 0.935       0.101
+
+==============================================================================
+Combined summary
+==============================================================================
+{
+  "E13": {
+    "trust_off_mean_qB": 0.9949861645698548,
+    "trust_on_mean_qB": 0.9948853492736817,
+    "trust_off_wrong_bloc_final": 0.9932023525238037,
+    "trust_on_wrong_bloc_final": 0.9929353336493174,
+    "trust_off_right_bloc_final": 0.9957506439515522,
+    "trust_on_right_bloc_final": 0.9957210634435926,
+    "trust_marginal_on_wrong_bloc": 0.00026701887448632444
+  },
+  "E14": {
+    "trust=False_rsrc=False": {
+      "mean": 0.9940673112869263,
+      "std": 2.819300971168559e-05,
+      "n": 5
+    },
+    "trust=False_rsrc=True": {
+      "mean": 0.6902701258659363,
+      "std": 0.17737457156181335,
+      "n": 5
+    },
+    "trust=True_rsrc=False": {
+      "mean": 0.9940754175186157,
+      "std": 1.200441056425916e-05,
+      "n": 5
+    },
+    "trust=True_rsrc=True": {
+      "mean": 0.7539068460464478,
+      "std": 0.12634077668190002,
+      "n": 5
+    },
+    "interaction": -0.06362861394882202,
+    "base": 0.9940673112869263,
+    "only_trust": 0.9940754175186157,
+    "only_rsrc": 0.6902701258659363,
+    "both": 0.7539068460464478
+  },
+  "E15": {
+    "c0=0.0": {
+      "wrong_final": 0.9940754055976868,
+      "right_final": 0.9923240303993225,
+      "final_r": 1.0
+    },
+    "c0=0.04": {
+      "wrong_final": 0.8064179420471191,
+      "right_final": 0.9580887198448181,
+      "final_r": 0.10021878331899643
+    },
+    "c0=0.08": {
+      "wrong_final": 0.7539068341255188,
+      "right_final": 0.9471588969230652,
+      "final_r": 0.09999998658895493
+    },
+    "c0=0.12": {
+      "wrong_final": 0.7539068579673767,
+      "right_final": 0.9471588969230652,
+      "final_r": 0.09999998658895493
+    },
+    "c0=0.2": {
+      "wrong_final": 0.7539068222045898,
+      "right_final": 0.9471588850021362,
+      "final_r": 0.10003072321414948
+    },
+    "c0=0.3": {
+      "wrong_final": 0.6894849061965942,
+      "right_final": 0.92393057346344,
+      "final_r": 0.10010934770107269
+    },
+    "c0=0.5": {
+      "wrong_final": 0.6908133089542389,
+      "right_final": 0.9346165657043457,
+      "final_r": 0.10056653171777725
+    }
+  }
+}

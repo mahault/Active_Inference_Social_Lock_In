@@ -102,7 +102,7 @@ def main():
     n_dep = 3
     edge_prec = 0.8
     n_steps = 200
-    seeds = [0, 1, 2, 3, 4]
+    seeds = list(range(int(os.environ.get("N_SEEDS", "5"))))  # 5 = original runs
     GAMMA_HI = 2.0
     u_mag = 1.0   # conviction magnitude -> asymmetry ~ n_dep*edge_prec*u_mag = 2.4
 

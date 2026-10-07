@@ -40,3 +40,9 @@ Thumbs.db
 # Claude Code
 CLAUDE.md
 .claude/
+
+# Local result snapshots
+experiments/results_snapshot_*/
+experiments/results/_snapshot_5seed/
+# Large trace dumps
+experiments/results/P1/traces.npz
