@@ -1,0 +1,88 @@
+% Joint follow-up to the IWAI 2026 paper (Hallgren, Hyland, Albarracin).
+% Scope agreed on the 1 Oct 2026 call: pluralist agents as the base; the question is
+% whether pluralist communities resist two-channel precision collapse better than
+% monist ones; belief utility and the motivated cost of mind-change come back in.
+% Trust split / selective sharing and motivated ignorance are follow-up papers.
+% Target: a Royal Society journal (rolling). Swap in the journal class once chosen.
+% Results sections are placeholders until P1/P2 are reviewed.
+
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[numbers]{natbib}
+\usepackage{hyperref}
+
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+\usepackage{xcolor}
+
+\title{When Do Pluralist Communities Lock In?\\
+\large Precision collapse on the world and social channels}
+% Author order to settle with Jonas and David.
+\author{Mahault Albarracin \and Jonas Hallgren \and David Hyland}
+\date{Draft, \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\todo{Write once P1 is in.}
+Pluralist agents, who hold rival theories side by side, can track a paradigm shift
+that monist agents miss \citep{hallgren2026Pluralist}. Holding a rival is not the same
+as testing it. We ask when a pluralist community stops behaving pluralistically and
+locks in. We treat lock-in as the collapse of precision on disconfirming evidence,
+through two channels: the agent's own observations, and what its neighbours report.
+\todo{Result: does pluralism protect against collapse of one channel, both, or neither?}
+\end{abstract}
+
+\section{Introduction}
+% Feyerabend's pluralism \citep{feyerabend1975AgainstMethod} and the IWAI result.
+% The gap: pluralism in belief vs pluralism in practice. A community can hold a rival
+% and still never let evidence for it through.
+% Our account: two channels, one currency (precision). Conviction and resource limits
+% close the world channel; trust governs the social channel.
+% Contribution list once results are in.
+\todo{Draft after P1.}
+
+\section{Background}
+\subsection{Pluralist and monist agents}
+% Summary of the IWAI model: K Gaussian theories in information form, support weights,
+% support sharing vs belief sharing \citep{hallgren2026Pluralist}.
+\subsection{Precision as the gate on disconfirming evidence}
+% Precision-weighting in active inference \citep{feldmanFriston2010Attention,parrFriston2019Attention}.
+% Motivated cost of changing one's mind \citep{hylandAlbarracin2025MindChange}.
+\subsection{Network epistemology}
+% \citep{zollman2010TransientDiversity,oconnorWeatherall2019Misinformation,albarracin2022EpistemicCommunities}
+
+\section{Model}
+\subsection{Base: the pluralist model}
+% src/pluralist/model.py (port of David's epistemic-pluralism code).
+\subsection{World channel}
+% Endogenous attention on the discriminating channel:
+% a_i = a_0 * w(conviction_i) * g(r_i). Conviction gate and resource gate.
+\subsection{Social channel}
+% Trust learned from neighbours' predictive density, Gamma-conjugate update.
+\subsection{Belief utility and the motivated cost of mind-change}
+% Gate on negative moves in support for the valued theory (P2).
+\subsection{Support forgetting}
+% The IWAI model never forgets support. We add a decay rho_L and report results
+% with and without it, so a pluralist advantage is not an artefact of saturation.
+
+\section{Experiments}
+\subsection{Protocol}
+% Shift protocol: mass sign flips at round 80; full observers plus restricted agents.
+\subsection{P1: pluralist vs monist under two-channel collapse}
+\todo{P1 results: experiments/results/P1/}
+\subsection{P2: belief utility}
+\todo{P2 results}
+
+\section{Discussion}
+% Pluralism in belief vs in practice. Willful vs deep ignorance
+% \citep{freedman2024KnowingBetter} as the bridge to the motivated-ignorance follow-up
+% \citep{williams2021MotivatedIgnorance}. Trust split and selective sharing as the
+% second follow-up \citep{mayer1995Trust,hagenbachSaucet2025MotivatedSkepticism}.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}

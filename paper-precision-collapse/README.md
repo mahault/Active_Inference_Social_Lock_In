@@ -10,6 +10,11 @@ work. The LaTeX source is [`main.tex`](main.tex); the bibliography is
 figures can be read without compiling. To build the PDF, see
 [Building](#building) at the bottom, or drop the folder into Overleaf.
 
+> **Updated 6 Oct 2026.** The results below are 20-seed reruns with each agent
+> observing at the experiment it chose (see
+> `notes/results_2026-10-05_reruns_and_pluralist.md`). `main.tex` and the copies
+> in `figures/` still show the June numbers and need updating.
+
 ---
 
 ## Abstract
@@ -58,51 +63,47 @@ fails to revert when the truth reverses.
 
 ## Key results
 
-### Trust + resources: super-additive regression from truth (E14)
-
-Wrong-bloc final belief in the truth on the trust-by-resource grid. Additivity
-predicts 0.69 for the both-on cell; the observed 0.38 is an interaction of +0.31.
-
-|            | resources off | resources on |
-|------------|:-------------:|:------------:|
-| trust off  | 0.994         | 0.690        |
-| trust on   | 0.994         | **0.381**    |
-
-![E14 trajectories](figures/E14_trajectories.png)
-
-With both channels on, the population climbs toward truth, peaks near step 15,
-then regresses to indecision. No single-channel condition does this.
-
-### Cross-channel: the negative result that fixed the thesis (E18)
-
-A 2×2×2 factorial over conviction (γ), trust, and resources. All three pairwise
-interactions are sub-additive, and trust's main effect is *corrective* (it
-raises wrong-bloc convergence from 0.90 to 0.985). Once trust is on, the wrong
-bloc converges regardless of γ or resources.
-
-![E18 cross-channel interactions](figures/E18_cross_channel.png)
-
-This forced the two-channel reading: a wrong-bloc agent gets disconfirming
-evidence from the world (its own observations) and from society (its
-neighbours). γ and resources close the world route; trust governs the social
-route. E18 only ever shuts one, so trust rescues the bloc. Lock-in needs both.
-
 ### The sign flip, mapped (E19)
 
-Sweeping the misled fraction with γ off, the trust-by-resource interaction is
-sub-additive while a correct majority survives and turns super-additive once the
-wrong bloc dominates. Zero crossing between 0.65 and 0.80.
+Wrong-bloc final belief in the truth, with gamma off, 20 seeds. Trust alone
+rescues a misled bloc even when it is the majority (0.985 at 50% misled, 0.85 at
+65%). With resources also on, that rescue disappears and the bloc ends near the
+resources-only level.
 
 | wrong fraction | 0.20 | 0.35 | 0.50 | 0.65 | 0.80 |
 |----------------|:----:|:----:|:----:|:----:|:----:|
-| interaction    | −0.051 | −0.137 | −0.035 | −0.023 | **+0.070** |
+| neither        | 0.985 | 0.886 | 0.601 | 0.213 | 0.052 |
+| trust only     | 0.985 | 0.985 | 0.985 | 0.852 | 0.346 |
+| resources only | 0.960 | 0.799 | 0.503 | 0.152 | 0.032 |
+| both           | 0.984 | 0.849 | 0.592 | 0.174 | 0.039 |
+| interaction    | −0.02 | +0.05 | **+0.30** | **+0.62** | **+0.29** |
 
-![E19 regime flip](figures/E19_regime_flip.png)
+Interaction = additive prediction minus observed (positive = the pair is worse
+than its parts). 95% bootstrap intervals: [0.15, 0.45], [0.47, 0.75],
+[0.14, 0.45] for the last three; Wilcoxon p < 0.003 for each. Below 0.35 misled
+the two channels do not compound. This is the cleanest evidence for the
+two-channel reading: trust corrects only while the world channel is open.
 
-Trust-only is the highest curve at every fraction. It stays corrective even when
-80% of agents hold the wrong paradigm, because it routes precision by accuracy
-and accuracy tracks the world. It fails only when starvation removes the
-truth-trackers' accuracy advantage, which is the super-additive corner.
+### Trust + resources on the cont substrate (E14)
+
+The interaction is −0.03 [−0.07, 0.00], not significant: on this substrate
+the two effects simply add up.
+
+|            | resources off | resources on |
+|------------|:-------------:|:------------:|
+| trust off  | 0.992         | 0.817        |
+| trust on   | 0.992         | 0.851        |
+
+E14 and E19 differ in substrate and in how many agents are misled (E14 has a
+30% misled bloc, where E19 also finds no interaction).
+
+### Cross-channel factorial (E18)
+
+A 2×2×2 factorial over conviction (γ), trust, and resources, 20 seeds. Trust
+raises wrong-bloc convergence from 0.91 to 0.985 when resources are off, but adds
+only +0.05 [0.01, 0.12] when resources are on (0.83 to 0.88). The trust ×
+resource interaction is +0.02 [−0.07, 0.11], not significant at a 30% misled
+bloc, consistent with E19 at that fraction.
 
 ### Material lock-in is path dependence, with hysteresis (E16, E17)
 
@@ -129,11 +130,11 @@ the social-coupling boundary. The corrected rule gates disconfirming movement
 
 ## Status
 
-The empirical core is essentially complete (~250 seeded runs across the
-substrates). The remaining work is writing polish and three de-risking steps:
-the 2D sign-flip surface (misled fraction × cost scale), K > 2 paradigms, and a
-scan-and-vectorize refactor for referee-scale sweeps. Target venue AAAI 2027,
-AAMAS as fallback.
+Not submitted to AAAI 2027. The headline is now the E19 sign flip and the
+hysteresis results. To do:
+rewrite the abstract, results and figures in `main.tex` around the updated
+numbers; add the 2D sign-flip surface (misled fraction × cost scale); re-test
+E17 with more than 3 seeds. Venue to decide.
 
 The affiliation line in `main.tex` is a placeholder; set it before submission.
 

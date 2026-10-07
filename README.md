@@ -1,6 +1,12 @@
 # Paradigm_Shift_Act_Inf
 
-Multi-agent active-inference simulation accompanying the IWAI 2026 paper *Variational Paradigm Dynamics* (working title).
+Multi-agent active-inference simulations of paradigm lock-in in scientific communities. The repo backs three papers:
+
+- the IWAI 2026 paper with Jonas Hallgren and David Hyland, *Can Network Models of Science Do Without Pluralist Agents?* (accepted, oral);
+- `paper-precision-collapse/`, a standalone paper on two-channel precision collapse;
+- `paper-pluralist-lockin/`, the joint follow-up on when pluralist communities lock in (started Oct 2026).
+
+Current results and decisions: `notes/results_2026-10-05_reruns_and_pluralist.md`.
 
 ## What
 
@@ -18,39 +24,47 @@ The codebase contains three model substrates:
 
 4. **Continuous-lambda model** (`src/pomdp/cont_step.py`) — direct multi-agent lift of Hyland & Albarracin (2025) Eq. 13: `q*(theta) ∝ prior(theta) · p(o|theta)^(1/lambda)`. Per-agent lambda tempers the likelihood; lambda evolves from KL cost of previous update (large changes → more conservative). Optional resource coupling gates exploration via trust-derived patronage. This is the active experimental substrate for E4-E6.
 
+5. **Structural model** (`src/pomdp/structural_step.py`) — per-agent dependency network, conviction-driven endogenous gamma, in-loop Bayesian model reduction. Used for E10-E11 and E18-E19.
+
+6. **Pluralist model** (`src/pluralist/`) — port of David Hyland's [epistemic-pluralism](https://github.com/dkhyland/epistemic-pluralism) (linear-Gaussian, rival theories held side by side), credited in each copied file. Extensions: conviction and resource gates on the discriminating channel, learned trust, support forgetting (`extended.py`); communities mixing pluralists, committed monists and neutral monists (`mixed.py`); trust learned from outcomes revealed after a delay (`verified.py`). Used for P1-P1e.
+
+**Observation sampling (5 Oct 2026):** with resources on, each agent observes at the experiment it chose, and trust is scored at that experiment. E8, E11 and E14-E19 were rerun with this; earlier versions of their results are at `85e7ad0`.
+
 ## Layout
 
 ```
 src/              Core simulation modules
-  pomdp/          Categorical POMDP scaffold + simplified model
-experiments/      YAML configs (E1-E3) + sweep runner
-tests/            Tiered test suite (60 tests)
+  pomdp/          Categorical POMDP scaffold, simplified, cont and structural models
+  pluralist/      Port of David Hyland's pluralist model + extensions (P-series)
+experiments/      YAML configs + sweep runner; results/ per experiment
+scripts/          Standalone experiment scripts (E13-E19, P1-P1e), stats, rerun scripts
+tests/            Tiered test suite (163 tests)
 notebooks/        Exploratory + figure generation (NB15-17 are active)
   _v1_archive/    Old continuous-substrate notebooks
 notes/            Design docs, theory brief, architecture review
-paper/            LNCS submission (anonymized; do NOT commit authors-deanon.tex)
+paper/            Original IWAI LNCS draft (anonymized; do NOT commit authors-deanon.tex)
+paper-precision-collapse/  Standalone two-channel paper (June numbers in main.tex)
+paper-pluralist-lockin/    Joint follow-up paper skeleton
 lit-review/       Topical lit reviews (markdown)
 archive/          Frozen v02 norms-as-shared-precision-priors draft
 ```
 
 ## Running
 
+The repo `.venv` is currently empty; the global Python 3.12 (jax, scipy, pytest) is what was used in Oct 2026. Run from the repo root.
+
 ```bash
-python -m venv .venv
-.venv\Scripts\activate     # Windows
-# source .venv/bin/activate  # macOS/Linux
 pip install -r requirements.txt
 
-# Smoke test
-python -c "import pymdp; import jax; print('pymdp + jax OK')"
+python -m pytest tests -q                        # full suite (163 tests)
 
-# Tests
-pytest tests/                              # full suite (46 tests)
-pytest tests/test_simple_step.py -v        # simplified model only
+# Config-driven experiments
+python -m experiments.run_experiment experiments/configs/E8_principled_ablation.yaml
 
-# Experiments (simplified model)
-python -m experiments.run_experiment experiments/configs/E1_stationary.yaml --dry-run
-python -m experiments.run_experiment experiments/configs/E1_stationary.yaml
+# Standalone scripts: module mode so `src` resolves; E13-E19 take N_SEEDS (default 5)
+N_SEEDS=20 python -m scripts.run_e19_regime_flip
+python -m scripts.run_p1c_mixed_communities
+python -m scripts.p1_stats                       # paired stats -> experiments/results/P1_stats.md
 ```
 
 ## Experiments
@@ -66,7 +80,10 @@ python -m experiments.run_experiment experiments/configs/E1_stationary.yaml
 | E7 | simple (C=5) | Discrete shift at t=100 | q_reliability x eps_resolve | **Principled phase diagram (Fig 3)** |
 | E8 | simple (C=5) | Discrete shift at t=100 | eps_resolve x resource ON/OFF | **Principled resource ablation (Fig 4)** |
 
-Configs in `experiments/configs/`. Results in `experiments/results/`.
+| E9-E20 | cont / structural / motivated | various | see `notes/` | Channel experiments (trust, resources, conviction, motivated gate); E8, E11, E14-E19 rerun 5-6 Oct |
+| P1-P1e | pluralist | Mass flips at round 80 | gamma x c0, composition, trust rule, delay | Do pluralist communities resist lock-in better than monist ones? |
+
+Configs in `experiments/configs/`. Results in `experiments/results/`. Current results and stats: `notes/results_2026-10-05_reruns_and_pluralist.md` and `experiments/results/P1_stats.md`.
 Detailed results: `notes/experiment_results_2026_05_27.md` (E1-E3),
 `notes/experiment_results_2026_05_28.md` (E4, E6),
 `notes/experiment_results_2026_05_28_principled.md` (E7, E8).
@@ -93,7 +110,7 @@ exiftool -all= main.pdf
 
 Submission is **double-blind**. The paper compiles with `\author{Anonymous}` by default. Real authors live in `paper/authors-deanon.tex` (gitignored). Do not link this repo from the paper; do not commit anything that identifies the authors.
 
-## Deadlines
+## Status (Oct 2026)
 
-- 2026-05-24: 250-word abstract registration (done)
-- 2026-06-07: 12-page LNCS full paper
+- IWAI 2026 paper accepted as an oral; Jonas presents in Madrid (12-17 Oct).
+- Joint follow-up started; Royal Society journal, no fixed deadline.
